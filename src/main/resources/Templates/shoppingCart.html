@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title> Softwear Shopping Cart Page</title>
     </head>
@@ -8,9 +8,9 @@
             <!-- TOP OF PAGE // LINKS TO OTHER PAGES-->
             <nav>   
                 <ul>
-                    <li><a href="FrontWebPage.html">HOME</a></li>
-                    <li><a href="Catalog.html">CATALOG</a></li>
-                    <li><a href="shoppingCart.html">SHOPPING Cart</a></li>
+                    <li><a th:href="@{/}">HOME</a></li>
+                    <li><a th:href="@{/catalog}">CATALOG</a></li>
+                    <li><a th:href="@{/cart}">SHOPPING CART</a></li>
                 </ul>
             </nav>
             <hr>
