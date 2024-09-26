@@ -4,17 +4,26 @@
         <title> Softwear Shopping Cart Page</title>
     </head>
     <body>
+        <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <header>
-            <!-- TOP OF PAGE // LINKS TO OTHER PAGES-->
+            <h1>Softwear</h1>
             <nav>   
                 <ul>
-                    <li><a th:href="@{/}">HOME</a></li>
-                    <li><a th:href="@{/catalog}">CATALOG</a></li>
-                    <li><a th:href="@{/cart}">SHOPPING CART</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li>
+                        <a th:href="@{/catalog}">Shop by Category</a>
+                        <ul>
+                            <li><a th:href="@{/catalog}">Shop All</a></li>
+                            <li><a th:href="@{/catalog}">Shirts</a></li>
+                            <li><a th:href="@{/catalog}">Pants</a></li>
+                            <li><a th:href="@{/catalog}">Shoes</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/cart}">Shopping Cart</a></li>
                 </ul>
             </nav>
             <hr>
-            <h1>Softwear</h1>
+            <br>
         </header>
         <section>
             <h2>SHOPPING CART</h2>
@@ -40,3 +49,29 @@
                 <button role="button">PURCHASE</button>
             </div>
         </section>
+
+        <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+        <footer>
+            <section>
+                <hr>
+                <h1>Softwear</h1>
+                <p> 1 UTSA Circle San Antonio, TX 78249</p>
+                <h2>About Us</h2>
+                <p>
+                    This is our totally real, totally not some nonsense text
+                    of our totally real Reselling Website. I'm not quite sure if this will stay
+                    but if it does we can put something here. Something better than this.
+                    Seriously, what was the point?
+                </p>
+                <button role="button">Careers</button>
+                <button role="button">Our partners</button>
+                <br>
+                 <h3>Help and Support</h3>
+                <button type ="button" onclick="window.location.href='mailto:example@example.com'">Contact Us!</button>
+                <button role="button">FAQ's</button>
+                <button role="button">Shipping and Delivery</button>
+                <p>&copy; 2024 Softwear. All rights reserved.</p>
+            </section>
+            </footer>
+    </body>
+</html>
