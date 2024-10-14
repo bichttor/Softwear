@@ -13,8 +13,10 @@ body {
     padding: 15px;
     background-color: #333;
     color: white;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -30,6 +32,7 @@ body {
     display: flex;         /* Aligns items horizontally */
     align-items: center;   /* Vertically aligns items */
     gap: 10px;             /* Adjusts the spacing between items */
+    margin-right: 20px;
 }
 
 .nav-menu li {
@@ -89,6 +92,56 @@ header {
     background-color: #333;
     color: white;
     padding: 10px 0;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;            /* Full width */
+    max-width: 800px;        /* Max width of carousel */
+    margin: auto;            /* Center the carousel */
+    overflow: hidden;        /* Hide images outside the container */
+}
+
+.carousel-slides {
+    display: flex;           /* Align images in a row */
+    transition: transform 0.5s ease-in-out; /* Smooth transition between slides */
+}
+
+.slide {
+    width:300px; 
+    height: 200px       
+}
+
+.slide.active {
+    display: block;          /* Show the active image */
+}
+
+/* Arrow button styles */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.featured-items{
+    position: relative;
 }
 
 /* Footer Styling */
