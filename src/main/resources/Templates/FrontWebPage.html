@@ -45,11 +45,36 @@
         <main>
             <section>
                 <h2>Main </h2>
+                <h2 class="featured-items">Featured Items</h2>
                 <p>
-                    This should be the body section where we can add images of items, stuff we are trying to sell, brands that we work with, etc. 
+                    The carousel js logic still needs to be corrected but its still rough 
                 </p>
-                <!-- This button effectively should do the same thing that the link to CATALOG DOEs-->
-                <button type ="button"><a  th:href="@{/catalog}">Start Browsing...</a></button>
+                <div class="carousel-container">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button> <!-- Left Arrow -->
+                    
+                    <div class="carousel-slides">
+                        <img class="slide" src="/shopImages/AirMagBTTF.png" alt="Image 1">
+                        <img class="slide" src="/shopImages/Foam Runners-Onyx.png" alt="Image 2">
+                        <img class="slide" src="/shopImages/Jarritos x Nike Dunk SB.png" alt="Image 3">
+                        <img class="slide" src="/shopImages/LEGENDSNEVERDIE.png" alt="Image 4">
+                        <img class="slide" src="/shopImages/PleasuresShirt.png" alt="Image 4">
+                        <img class="slide" src="/shopImages/RassvetCorduroyNAVY.png" alt="Image 4">
+                    </div>
+                    
+                    <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
+                </div>
+                <script src="/js/carousel.js"></script>
+                <br><br>
+                <button type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
+                <br><br>
+                <video width="100%" autoplay loop muted>
+                    <source src="/miscVideos/1154850-hd_1920_1080_24fps.mp4" type="video/mp4">
+                </video>
+                <br><br>
+                <video width="100%" autoplay loop muted>
+                    <source src="/miscVideos/9724311-hd_1440_1080_30fps.mp4" type="video/mp4">
+                </video>
+                <br><br>
             </section>
         </main>
 
