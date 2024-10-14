@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    list-style-type: none; /* Removes bullet points */
+    display: flex;         /* Aligns items horizontally */
+    align-items: center;   /* Vertically aligns items */
+    gap: 10px;             /* Adjusts the spacing between items */
+}
+
+.nav-menu li {
+    position: relative;    /* Required for dropdown menus */
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    padding: 10px; 
+}
+
+.nav-menu li i {
+    font-size: 20px;  /* Adjusts the icon size */
+    vertical-align: middle;  /* Ensures icons align vertically with text */
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;    /* Hides dropdown by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;            /* Removes padding */
+}
+
+.dropdown-content li {
+    padding: 8px 16px;     /* Adds padding for items in the dropdown */
+}
+
+.dropdown-content li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 14px;
+}
+
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+.nav-menu li:hover .dropdown-content {
+    display: block;
+}
+
+/* Sticky Header Styling */
+header {
+    border-bottom: 2px solid #ddd;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Footer Styling */
+footer {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: left;
+}
+
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
