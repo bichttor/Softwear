@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "spring.h2.database-url",
+  "type": "java.lang.String",
+  "description": "Database for products and users, data goes in this folder to keep it persistent"
+}]}
