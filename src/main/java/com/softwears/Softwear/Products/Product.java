@@ -5,15 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+/*Using the Entity tag creates a table with the values given so no schema will have to be written */
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long  id;
+    private int  id;
     private String productName;
     private String productDescription;
-    private String productType; /*Shoes, Shirts, Pants, ....*/
+    private String productType; /*Shoes, Shirts, Pants, .... for sorting*/
     private double productPrice;
     
     public Product(){}
@@ -25,10 +25,10 @@ public class Product {
         this.productType = type;
     }
 
-    public Long getId(){
+    public int getId(){
         return id;
     }
-    public void setId(Long id){
+    public void setId(int id){
         this.id = id;
     }
     public String getName(){
