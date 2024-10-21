@@ -173,3 +173,19 @@ hr {
     border: 0;
     border-top: 1px solid #ccc;
 }
+
+main {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: left;
+}
+
+section {
+
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        text-align: left;
+
+}
