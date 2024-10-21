@@ -1,0 +1,44 @@
+<!-- This is the logic for the navigation bar - will be on every page -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title> Softwear - Home </title>
+        <link rel="stylesheet" href="/css/FrontPageStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <h1 class="title">Softwear</h1>
+                <nav>   
+                    <ul class="nav-menu">
+                        <li><a th:href="@{/}">Home</a></li>
+                        <li class="dropdown">
+                            <a th:href="@{/catalog}">Shop by Category</a>
+                            <ul class="dropdown-content">
+                                <li><a th:href="@{/catalog}">Shop All</a></li>
+                                <li><a th:href="@{/catalog}">Shirts</a></li>
+                                <li><a th:href="@{/catalog}">Pants</a></li>
+                                <li><a th:href="@{/catalog}">Shoes</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Help</a>
+                            <ul class="dropdown-content">
+                                <li><a th:href="@{/faq}">FAQ</a></li>
+                                <li><a th:href="@{/contact}">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li><i class="fas fa-search"></i></li>
+                        <li><i class="fas fa-user"></i></li>
+                        <li><a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <hr>
+            <br>
+        </header>
+    </body>
+</html>
