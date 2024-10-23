@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+ <!-- THIS IS AN EXAMPLE CATALOG THAT CAN DYNAMICALLY HOLD THE PRODUCTS WITHOUT THE NEED OF MULTIPLE HTML
+PAGES PLS FEEL FREE TO UPDATE IT AND MAKE IT LOOK PRETTY 
+SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES AND WE CAN JUST USE THIS ONE-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title> Softwear - Home </title>     
+    <link rel="stylesheet" href="/css/FrontPageStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+    <h1>EXAMPLE FOR FETCHING PRODUCT DATA</h1>
+    <div>
+        <!-- This is how the buttons can be implemented into every page that requires these-->
+        <button onclick="location.href='/catalog?type=shirts'">Shirts</button>
+        <button onclick="location.href='/catalog?type=pants'">Pants</button>
+        <button onclick="location.href='/catalog?type=shoes'">Shoes</button>
+        <button onclick="location.href='/catalog?type=womens'">Womens</button>
+        <button onclick="location.href='/catalog?type=all'">All</button>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through products and display them in table rows -->
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.type}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <img th:src="${product.image}" alt="Product Image" style="width:100px;height:100px;"/> <!-- Displaying the product image -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

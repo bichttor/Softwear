@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" background-color= "#333">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title> Softwear - Home </title>     
+        <link rel="stylesheet" href="/css/FrontPageStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="body">
+        <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+        <header>
+            <div class="header-container">
+                <h1 class="title">Softwear</h1>
+                <nav>   
+                    <ul class="nav-menu">
+                        <li><a th:href="@{/}">Home</a></li>
+                        <li class="dropdown">
+                            <a th:href="@{/catalog}">Shop by Category</a>
+                            <ul class="dropdown-content">
+                                <li><a th:href="@{/men}">Shop Men</a></li>
+                                <li><a th:href="@{/women}">Shop Women</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Help</a>
+                            <ul class="dropdown-content">
+                                <li><a th:href="@{/faq}">FAQ</a></li>
+                                <li><a th:href="@{/contact}">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li><i class="fas fa-search"></i></li>
+                        <li><i class="fas fa-user"></i></li>
+                        <li><a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <hr>
+            <br>
+        </header>
+        <!-- SHIRT/TOP SECTION-->
+        <section>
+            <h2>SHIRTS</h2>
+            <div>
+                <div>
+                    <strong>SHIRT 1</strong>
+                </div>
+                <img src="shopImages/LEGENDSNEVERDIE.png" width="300" height="300">
+                <div>
+                    <span>$68.00</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <strong>SHIRT 2</strong>
+                </div>
+                <img src="shopImages/PleasuresShirt.png" width="300" height="300">
+                <div>
+                    <span>$42.00</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+
+        </section>
+        <!-- PANTS/BOTTOMS SECTION-->
+        <section>
+            <h2>PANTS</h2>
+            <div>
+                <div>
+                    <strong>PANTS 1 </strong>
+                </div>
+                <img src="shopImages/RassvetCorduroyNAVY.png" width="300" height="300">
+                <div>
+                    <span>$125.00</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+        </section>
+        <!-- SHOES SECTION-->
+        <section>
+            <h2>SNEAKERS</h2>
+            <div>
+                <div>
+                    <strong>Jarritos x Nike Dunk SB</strong>
+                </div>
+                <img src="shopImages/Jarritos x Nike Dunk SB.png" width="300" height="300">
+                <div>
+                    <span>$355.00</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <strong>Foam Runners "Onyx"</strong>
+                </div>
+                <img src="shopImages/Foam Runners-Onyx.png" width="300" height="300">
+                <div>
+                    <span>$122.00</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <strong> Air Mag "Back To The Future"</strong>
+                </div>
+                <img src="shopImages/AirMagBTTF.png" width="300" height="300">
+                <div>
+                    <span>$26,550</span>
+                    <button role="button">ADD TO CART</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+        <footer>
+            <section>
+                <hr>
+                <h1>Softwear</h1>
+                <p> 1 UTSA Circle San Antonio, TX 78249</p>
+                <h2>About Us</h2>
+                <p>
+                    This is our totally real, totally not some nonsense text
+                    of our totally real Reselling Website. I'm not quite sure if this will stay
+                    but if it does we can put something here. Something better than this.
+                    Seriously, what was the point?
+                </p>
+                <button role="button">Careers</button>
+                <button role="button">Our partners</button>
+                <br>
+                 <h3>Help and Support</h3>
+                <button type ="button" onclick="window.location.href='mailto:example@example.com'">Contact Us!</button>
+                <button role="button">FAQ's</button>
+                <button role="button">Shipping and Delivery</button>
+                <p>&copy; 2024 Softwear. All rights reserved.</p>
+            </section>
+            </footer>
+    </body>
+</html>
