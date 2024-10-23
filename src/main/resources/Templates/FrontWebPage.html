@@ -18,10 +18,13 @@
                         <li class="dropdown">
                             <a th:href="@{/catalog}">Shop by Category</a>
                             <ul class="dropdown-content">
-                                <li><a th:href="@{/catalog}">Shop All</a></li>
-                                <li><a th:href="@{/catalog}">Shirts</a></li>
-                                <li><a th:href="@{/catalog}">Pants</a></li>
-                                <li><a th:href="@{/catalog}">Shoes</a></li>
+                                <!-- FRONT END PEOPLE PLS CHANGE THIS TO LOOK PRETTY AND USE THIS LOGIC FOR THE OTHER BUTTONS THIS IS JUST AN EXAMPLE OF HOW TO -->
+                                <button onclick="location.href='/catalog?type=shirts'">Shirts</button>
+                                <button onclick="location.href='/catalog?type=pants'">Pants</button>
+                                <button onclick="location.href='/catalog?type=shoes'">Shoes</button>
+                                <button onclick="location.href='/catalog?type=womens'">Womens</button>
+                                <button onclick="location.href='/catalog?type=mens'">Mens</button>
+                                <button onclick="location.href='/catalog?type=all'">All</button>
                             </ul>
                         </li>
                         <li class="dropdown">
