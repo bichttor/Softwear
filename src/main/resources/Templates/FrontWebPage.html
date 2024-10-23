@@ -9,45 +9,86 @@
     </head>
     <body>
         <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
-        <header>
-            <div class="header-container">
-                <h1 class="title">Softwear</h1>
-                <nav>   
-                    <ul class="nav-menu">
-                        <li><a th:href="@{/}">Home</a></li>
-                        <li class="dropdown">
-                            <a th:href="@{/catalog}">Shop by Category</a>
-                            <ul class="dropdown-content">
-                                <!-- FRONT END PEOPLE PLS CHANGE THIS TO LOOK PRETTY AND USE THIS LOGIC FOR THE OTHER BUTTONS THIS IS JUST AN EXAMPLE OF HOW TO -->
-                                <button onclick="location.href='/catalog?type=shirts'">Shirts</button>
-                                <button onclick="location.href='/catalog?type=pants'">Pants</button>
-                                <button onclick="location.href='/catalog?type=shoes'">Shoes</button>
-                                <button onclick="location.href='/catalog?type=womens'">Womens</button>
-                                <button onclick="location.href='/catalog?type=mens'">Mens</button>
-                                <button onclick="location.href='/catalog?type=all'">All</button>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Help</a>
-                            <ul class="dropdown-content">
-                                <li><a th:href="@{/faq}">FAQ</a></li>
-                                <li><a th:href="@{/contact}">Contact Us</a></li>
-                            </ul>
-                        </li>
-                        <li><i class="fas fa-search"></i></li>
-                        <li><i class="fas fa-user"></i></li>
-                        <li><a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a></li>
-                    </ul>
-                </nav>
+        <header id="header-nav" class="header js-header">
+            <div class="header_wrap gutter">
+                <div class="nav-container">
+                    <a class="header_home" th:href="@{/}"><img src="/shopImages/logo.png"></a>
+                    <nav class="nav_menu">
+                        <div class="nav_titleCont">
+                            <p class="nav_title">Home</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+
+                        <div class="nav_titleCont">
+                            <p class="nav_title">Men</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+
+                        <div class="nav_titleCont">
+                            <p class="nav_title">Women</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Shop</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <a th:href="@{/catalog}">Shop All</a>
+                                <a th:href="@{/catalog}">Shirts</a>
+                                <a th:href="@{/catalog}">Pants</a>
+                                <a th:href="@{/catalog}">Shoes</a>
+                            </div>
+                        </div>
+
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Help</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <a th:href="@{/catalog}">FAQ</a>
+                                <a th:href="@{/catalog}">Contact Us</a>
+                            </div>
+                        </div>
+
+                        <div class="nav_titleCont">
+                            <p class="nav_title">About Us</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                    </nav>
+                    <div class-="header_right">
+                        <div class="nav_searchCont nav_searchCont--close">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="nav_accountCont nav_accountCont">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="nav_cartCont nav_cartCont">
+                            <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <hr>
-            <br>
         </header>
-        
          <!-- Main Body Section-->
         <main>
+            <br>
             <section>
-                <h2>Main</h2>
+                <br>
                 <h2 class="featured-items">Featured Items</h2>
                 <p>
                     The carousel js logic still needs to be corrected but its still rough 
