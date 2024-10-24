@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="/css/loginStyle.css">
+</head>
+
+<body>
+    <header id="header-nav" class="header js-header">
+        <div class="header_wrap gutter">
+            <div class="nav-container">
+                <a class="header_home" th:href="@{/}"><img src="/shopImages/logo.png"></a>
+                <nav class="nav_menu">
+                    <div class="nav_titleCont">
+                        <p class="nav_title">Home</p>
+                        <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+
+                    <div class="nav_titleCont">
+                        <p class="nav_title">Men</p>
+                        <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+
+                    <div class="nav_titleCont">
+                        <p class="nav_title">Women</p>
+                        <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+
+                    <div tabindex="0" class="nav_lvl1">
+                        <div class="nav_titleCont">
+                            <p class="nav_title">Shop</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                        <div class="nav_dropdown">
+                            <a th:href="@{/catalog}">Shop All</a>
+                            <a th:href="@{/catalog}">Shirts</a>
+                            <a th:href="@{/catalog}">Pants</a>
+                            <a th:href="@{/catalog}">Shoes</a>
+                        </div>
+                    </div>
+
+                    <div tabindex="0" class="nav_lvl1">
+                        <div class="nav_titleCont">
+                            <p class="nav_title">Help</p>
+                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                        <div class="nav_dropdown">
+                            <a th:href="@{/catalog}">FAQ</a>
+                            <a th:href="@{/catalog}">Contact Us</a>
+                        </div>
+                    </div>
+
+                    <div class="nav_titleCont">
+                        <p class="nav_title">About Us</p>
+                        <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                </nav>
+                <div class-="header_right">
+                    <div class="nav_searchCont nav_searchCont--close">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="nav_accountCont nav_accountCont">
+                        <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                    </div>
+                    <div class="nav_cartCont nav_cartCont">
+                        <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Login Form Code -->
+     <div class="main">
+        <h1>Softwear</h1>
+        <h3>Enter your login information</h3>
+     </div>
+     <form action="">
+        <label for="first">Username:</label>
+        <input type="text" id="first" name="first"
+            placeholder="Enter your Username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"
+            placeholder="Enter your password" required>
+        
+        <button type="submit"> Submit </button>
+
+        <label for="checkbox">Remember Me</label>
+        <input type="checkbox" id="checkbox" name="checkbox"
+            placeholder="Remember Me">
+     </form>
+</body>
+
+</html>
