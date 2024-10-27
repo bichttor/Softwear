@@ -1,16 +1,15 @@
-package com.softwears.Softwear.Products;
-
+package com.softwears.Softwear.Homepage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller 
-public class menController {
+@Controller
 
-    @GetMapping("/men")
+public class faqController {
+
+    @GetMapping("/faq")
     public String getMethodName(Model model) {
-        return "men";
+        return "faq";
     }
     
-
 }

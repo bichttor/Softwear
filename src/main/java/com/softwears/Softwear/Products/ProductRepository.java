@@ -8,5 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    public List<Product> findByProductType(String type); /* Allows for sorting by shoes,shirts, etc. */
+    List<Product> findByProductType(String productType); /* Allows for sorting by shoes,shirts, etc. */
+    List<Product> findByProductGender(String productGender);  /*sorts by category */
+    List<Product> findByProductTypeAndProductGender(String productType, String productGender); /* sorts by category and type */
+    List<Product> findByProductNameContainingIgnoreCase(String productName); /*When search bar is implemented, will find products with similar name as provided */
+    /*Will have to update methods to only show avaliable products */
 }

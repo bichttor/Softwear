@@ -43,10 +43,11 @@
                                 </svg>
                             </div>
                             <div class="nav_dropdown">
-                                <a th:href="@{/catalog}">Shop All</a>
-                                <a th:href="@{/catalog}">Shirts</a>
-                                <a th:href="@{/catalog}">Pants</a>
-                                <a th:href="@{/catalog}">Shoes</a>
+                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
+                                <button onclick="navigate('all','all')">All</button>
+                                <button onclick="navigate('all','shirts')">Shirts</button>
+                                <button onclick="navigate('all','pants')">Pants</button>
+                                <button onclick="navigate('all','shoes')">Shoes</button>
                             </div>
                         </div>
 
@@ -108,6 +109,7 @@
                     <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
                 </div>
                 <script src="/js/carousel.js"></script>
+                
                 <br><br>
                 <button class="shop-button" type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
                 <br><br>
@@ -145,4 +147,5 @@
         </section>
         </footer>
     </body>
+    <script src="/js/search.js"></script>
 </html>
