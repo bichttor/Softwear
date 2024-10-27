@@ -1,4 +1,4 @@
-package com.softwears.Softwear.Login;
+package com.softwears.Softwear.Users;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
