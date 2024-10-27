@@ -12,32 +12,19 @@
         <header id="header-nav" class="header js-header">
             <div class="header_wrap gutter">
                 <div class="nav-container">
-                    <a class="header_home" th:href="@{/}"><img src="/shopImages/logo.png"></a>
+                    <a class="header_home" th:href="@{/}"><img src="/shopImages/logo2.png"></a>
                     <nav class="nav_menu">
-                        <div class="nav_titleCont">
-                            <p class="nav_title">Home</p>
-                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </div>
-
-                        <div class="nav_titleCont">
-                            <p class="nav_title">Men</p>
-                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </div>
-
-                        <div class="nav_titleCont">
-                            <p class="nav_title">Women</p>
-                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">
+                                    <a th:href="@{/}">Home</a>
+                                </p>
+                            </div>
                         </div>
 
                         <div tabindex="0" class="nav_lvl1">
                             <div class="nav_titleCont">
-                                <p class="nav_title">Shop</p>
+                                <p class="nav_title">Men</p>
                                 <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
                                     <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                 </svg>
@@ -59,16 +46,18 @@
                                 </svg>
                             </div>
                             <div class="nav_dropdown">
-                                <a th:href="@{/catalog}">FAQ</a>
-                                <a th:href="@{/catalog}">Contact Us</a>
+                                <a th:href="@{/faq}">FAQ</a>
+                                <a th:href="@{/contact}">Contact Us</a>
                             </div>
                         </div>
 
-                        <div class="nav_titleCont">
-                            <p class="nav_title">About Us</p>
-                            <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">About Us</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
                         </div>
                     </nav>
                     <div class-="header_right">
@@ -76,7 +65,7 @@
                             <i class="fas fa-search"></i>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
-                            <i class="fas fa-user"></i>
+                            <a th:href="@{/login}"><i class="fas fa-user"></i></a>
                         </div>
                         <div class="nav_cartCont nav_cartCont">
                             <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
@@ -85,9 +74,44 @@
                 </div>
             </div>
         </header>
+
          <!-- Main Body Section-->
-        <main>
+        <main id="app" class="main js-main">
             <br>
+            <br>
+            <div class="fullSlider">
+                <div class="qSlider_fullHeight">
+                    <div class="qSlider">
+                        <div class="qSlider_slides">
+                            <div class="gutter qSlider_wrap qSlider_wrap--center whiteText">
+                                <div class="videoWrapper">
+                                    <video autoplay loop muted>
+                                        <source src="\miscVideos\1154850-hd_1920_1080_24fps.mp4" type="video/mp4">
+                                    </video>
+                                    <!-- Overlay Content -->
+                                    <div class="qSlider_overlay">
+                                        <p class="qSlider_topLine">October Sales</p>
+                                        <div class="qSlider_h2">
+                                            <h2>50% off</h2>
+                                        </div>
+                                        <div class="qSlider_desc">
+                                            <p><strong>Take advantage of sales throughout the month of October</strong></p>
+                                            <p>50% of Women's accessories with a $100 or more purchase</p>
+                                        </div>
+                                        <div class="buttons qSlider_cta">
+                                            <div class="saleBtn saleBtn--tall saleBtn--white">
+                                                <a tabindex="0" th:href="@{/women}">
+                                                    <p>Shop Now</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <section>
                 <br>
                 <h2 class="featured-items">Featured Items</h2>
@@ -96,7 +120,6 @@
                 </p>
                 <div class="carousel-container">
                     <button class="prev" onclick="prevSlide()">&#10094;</button> <!-- Left Arrow -->
-                    
                     <div class="carousel-slides">
                         <img class="slide" src="/shopImages/AirMagBTTF.png" alt="Image 1">
                         <img class="slide" src="/shopImages/Foam Runners-Onyx.png" alt="Image 2">
@@ -104,8 +127,7 @@
                         <img class="slide" src="/shopImages/LEGENDSNEVERDIE.png" alt="Image 4">
                         <img class="slide" src="/shopImages/PleasuresShirt.png" alt="Image 4">
                         <img class="slide" src="/shopImages/RassvetCorduroyNAVY.png" alt="Image 4">
-                    </div>
-                    
+                    </div> 
                     <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
                 </div>
                 <script src="/js/carousel.js"></script>
@@ -113,13 +135,6 @@
                 <br><br>
                 <button class="shop-button" type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
                 <br><br>
-                <video width="100%" autoplay loop muted>
-                    <source src="/miscVideos/1154850-hd_1920_1080_24fps.mp4" type="video/mp4">
-                </video>
-                <br><br>
-                <video width="100%" autoplay loop muted>
-                    <source src="/miscVideos/9724311-hd_1440_1080_30fps.mp4" type="video/mp4">
-                </video>
             </section>
         </main>
 

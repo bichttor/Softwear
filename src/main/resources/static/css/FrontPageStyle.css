@@ -8,12 +8,12 @@ body {
 
 /* General styling for the header */
 .header {
-    z-index: 2;
+    z-index: 3;
 }
 
 .header {
     position: fixed;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     width: 100%;
     height: 70px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -31,7 +31,7 @@ body {
 .header_wrap {
     width: 100%;
     height: 70px;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
 }
 
 *, :after, :before {
@@ -85,6 +85,11 @@ body {
     font-size: 18px;
 }
 
+.nav_title a{
+    text-decoration: none;
+    color: black;
+}
+
 .nav_carrot {
     fill:#333;
 }
@@ -92,7 +97,7 @@ body {
 .nav_dropdown {
     display: none;
     position: absolute;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
@@ -142,15 +147,15 @@ body {
 
 .carousel-container {
     position: relative;
-    width: 100%;            /* Full width */
-    max-width: 800px;        /* Max width of carousel */
-    margin: auto;            /* Center the carousel */
-    overflow: hidden;        /* Hide images outside the container */
+    width: 100%;            
+    max-width: 800px;       
+    margin: auto;           
+    overflow: hidden;        
 }
 
 .carousel-slides {
-    display: flex;           /* Align images in a row */
-    transition: transform 0.5s ease-in-out; /* Smooth transition between slides */
+    display: flex;         
+    transition: transform 0.5s ease-in-out; 
 }
 
 .slide {
@@ -159,7 +164,7 @@ body {
 }
 
 .slide.active {
-    display: block;          /* Show the active image */
+    display: block;          
 }
 
 /* Arrow button styles */
@@ -167,7 +172,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    background-color: rgba(0,0,0,0.5); 
     color: white;
     border: none;
     padding: 10px;
@@ -206,10 +211,93 @@ body {
     background-color: #b1b0b0;
 }
 
+/* Overlay video content */
+.videoWrapper{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+
+.videoWrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.qSlider_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.qSlider_topLine{
+    font-size: 24px;
+}
+
+.qSlider_h2 h2{
+    font-size: 60px;
+}
+
+.qSlider_desc p{
+    font-size: 18px;
+}
+
+.qSlider_overlay p,
+.qSlider_overlay h2 {
+    margin: 0.3em 0;
+    z-index: 3;
+}
+
+.buttons {
+    margin-top: 1em;
+    pointer-events: auto;
+}
+
+.saleBtn {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 3;
+}
+
+.saleBtn a{
+    color: white;
+    text-decoration: none;
+}
+
+.saleBtn p {
+    font-size: 20px;
+}
+
+.saleBtn:hover {
+    background-color: darkred;
+}
+
 /* Footer Styling */
 footer {
     padding: 20px;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     color: #333;
     text-align: left;
 }
@@ -222,7 +310,7 @@ hr {
 
 main {
     padding: 20px;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     color: black;
     text-align: left;
 }
@@ -230,7 +318,7 @@ main {
 section {
 
         padding: 20px;
-        background-color: #fcecec;
+        background-color: #f1e8e3;
         color: #333;
         text-align: left;
 
