@@ -34,8 +34,8 @@ public class Product {
     @Column(name = "product_price")
     private double productPrice;
 
-    @Column(name = "sales_status")
-    private int salesStatus; /*0 for avaliable, 1 for sold , for updating database i.e not showing sold items/allowing sold items to be sold again*/
+    @Column(name = "sales_quantity")
+    private int salesQuantity; /*When it is 0 remove from catalog*/
 
     @Column(name = "product_image") 
     private String productImage;
@@ -47,7 +47,7 @@ public class Product {
         this.productDescription = description;
         this.productType = type;
         this.productGender = gender;
-        this.salesStatus = sales;
+        this.salesQuantity = sales;
         this.productImage = image;
     }
     public void setId(int id){
@@ -73,8 +73,8 @@ public class Product {
     public double getProductPrice(){
         return productPrice;
     }
-    public int getSalesStatus(){
-        return salesStatus;
+    public int getSalesQuantity(){
+        return salesQuantity;
     }
     public String getProductImage(){
         return productImage;

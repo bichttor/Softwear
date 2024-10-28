@@ -20,18 +20,18 @@ public class ProductService {
     
     public List<Product> getGender(String Gender){
         List<Product> products;
-        products = repo.findByProductGender("unisex");
-        products.addAll(repo.findByProductGender(Gender));
+        products = repo.findByProductGenderAndSalesQuantityGreaterThan("unisex", 0);
+        products.addAll(repo.findByProductGenderAndSalesQuantityGreaterThan(Gender, 0));
         return products;
     }
     public List<Product> getTypeGender(String Type, String Gender){
         List<Product> products;
-        products = repo.findByProductTypeAndProductGender(Type,"unisex");
-        products.addAll(repo.findByProductTypeAndProductGender(Type, Gender));
+        products = repo.findByProductTypeAndProductGenderAndSalesQuantityGreaterThan(Type, "unisex", 0);
+        products.addAll(repo.findByProductTypeAndProductGenderAndSalesQuantityGreaterThan(Type, Gender, 0));
         return products;
     }
     public List<Product> getType(String Type){
-        return repo.findByProductType(Type);
+        return repo.findByProductTypeAndSalesQuantityGreaterThan(Type, 0);
     }  
     public List<Product> searchProducts(String Name){
         return repo.findByProductNameContainingIgnoreCase(Name);
