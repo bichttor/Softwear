@@ -15,17 +15,22 @@ public class CatalogController {
 
     @Autowired
     private ProductService productservice;
-   
+    
     @GetMapping("/catalog")
-    public String getAllProducts(@RequestParam("type") String type, Model model){
+    public String getProducts(@RequestParam(required = false) String type ,@RequestParam(required = false) String gender, Model model){
         List<Product> products;
-        products = switch (type.toLowerCase()) {
-            case "shirts" -> productservice.getShirts(); 
-            case "pants" -> productservice.getPants();
-            case "shoes" -> productservice.getShoes();
-            /*Implement Cases for mens and womens */
-            default ->  productservice.getProducts();
-        }; 
+        if(!gender.equals("all") && !type.equals("all")){
+            products = productservice.getTypeGender(type, gender);
+        }
+        else if(!gender.equals("all")){
+            products = productservice.getGender(gender);
+        }
+        else if(!type.equals("all")){
+            products = productservice.getType(type);
+        }
+        else{
+            products = productservice.getProducts();
+        }
         model.addAttribute("products", products);
         return "catalog";
     }

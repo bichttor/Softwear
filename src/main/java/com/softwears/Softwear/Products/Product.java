@@ -7,14 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 /*Using the Entity tag creates a table with the values given so no schema will have to be written 
  * You can essentially copy and paste this file for other data and just change the respective values
 */
 
 @Entity
-@Table(name = "product") /* set for data consistency */
+@Table(name = "product") /* set for data integrity */
 public class Product {
-    /*@Columns are set for data consistency */
+    /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int    id;
@@ -26,48 +27,56 @@ public class Product {
 
     @Column(name = "product_type")
     private String productType; /*Shoes, Shirts, Pants, .... for sorting*/
-   
+
+    @Column(name = "product_gender")
+    private String productGender; /* male, female, unisex(will show for both male and female) */
+
     @Column(name = "product_price")
     private double productPrice;
 
-    @Column(name = "sales_status")
-    private int salesStatus; /*0 for avaliable, 1 for sold , for updating database i.e not showing sold items/allowing sold items to be sold again*/
+    @Column(name = "sales_quantity")
+    private int salesQuantity; /*When it is 0 remove from catalog*/
 
     @Column(name = "product_image") 
     private String productImage;
     public Product(){}
 
-    public Product(String name, double price, String description, String type, int sales, String image){
+    public Product(String name, double price, String description, String type, int sales, String image, String gender){
         this.productName = name;
         this.productPrice = price;
         this.productDescription = description;
         this.productType = type;
-        this.salesStatus = sales;
+        this.productGender = gender;
+        this.salesQuantity = sales;
         this.productImage = image;
-    }
-
-    public int getId(){
-        return id;
     }
     public void setId(int id){
         this.id = id;
     }
-    public String getName(){
+    
+    /*Getters */
+    public int getId(){
+        return id;
+    }
+    public String getProductName(){
         return productName;
     }
-    public String getDescription(){
+    public String getProductDescription(){
         return productDescription;
     }
-    public String getType(){
+    public String getProductType(){
         return productType;
+    } 
+    public String getProductGender(){
+        return productGender;
     }
-    public double getPrice(){
+    public double getProductPrice(){
         return productPrice;
     }
-    public int getStatus(){
-        return salesStatus;
+    public int getSalesQuantity(){
+        return salesQuantity;
     }
-    public String getImage(){
+    public String getProductImage(){
         return productImage;
     }
 }

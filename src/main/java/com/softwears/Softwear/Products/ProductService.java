@@ -18,21 +18,23 @@ public class ProductService {
         return repo.findById(id).orElse(new Product());
     }
     
-    public List<Product> getMens(){
-        return repo.findAll(); /*implement sorting for mens */
+    public List<Product> getGender(String Gender){
+        List<Product> products;
+        products = repo.findByProductGenderAndSalesQuantityGreaterThan("unisex", 0);
+        products.addAll(repo.findByProductGenderAndSalesQuantityGreaterThan(Gender, 0));
+        return products;
     }
-    public List<Product> getWomens(){
-        return repo.findAll(); /*implement sorting for womens */
+    public List<Product> getTypeGender(String Type, String Gender){
+        List<Product> products;
+        products = repo.findByProductTypeAndProductGenderAndSalesQuantityGreaterThan(Type, "unisex", 0);
+        products.addAll(repo.findByProductTypeAndProductGenderAndSalesQuantityGreaterThan(Type, Gender, 0));
+        return products;
     }
-    
-    public List<Product> getShoes(){
-        return repo.findByProductType("shoes");
+    public List<Product> getType(String Type){
+        return repo.findByProductTypeAndSalesQuantityGreaterThan(Type, 0);
     }  
-    public List<Product> getShirts(){
-        return repo.findByProductType("shirt");
-    }
-    public List<Product> getPants(){
-        return repo.findByProductType("pants");
+    public List<Product> searchProducts(String Name){
+        return repo.findByProductNameContainingIgnoreCase(Name);
     }
     public void addProduct(Product product){
         repo.save(product);
