@@ -350,13 +350,6 @@ display: flex;
 	align-items: center;
 }
 
-/* Ensure the list items behave like flex items */
-.slider ul {
-    display: flex;                 /* Make the <ul> a flex container */
-    flex-wrap: wrap;               /* Allow items to wrap if needed */
-    padding: 0;                    /* Remove default padding */
-    margin: 0;                     /* Remove default margin */
-}
  
 
 /* Footer Styling */
