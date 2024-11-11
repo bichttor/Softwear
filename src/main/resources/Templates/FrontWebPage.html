@@ -143,29 +143,187 @@
                     </div>
                 </div>
             </div>
-            <section>
-                <br>
-                <h2 class="featured-items">Featured Items</h2>
-                <p>
-                    The carousel js logic still needs to be corrected but its still rough 
-                </p>
-                <div class="carousel-container">
-                    <button class="prev" onclick="prevSlide()">&#10094;</button> <!-- Left Arrow -->
-                    <div class="carousel-slides">
-                        <img class="slide" src="/shopImages/AirMagBTTF.png" alt="Image 1">
-                        <img class="slide" src="/shopImages/Foam Runners-Onyx.png" alt="Image 2">
-                        <img class="slide" src="/shopImages/Jarritos x Nike Dunk SB.png" alt="Image 3">
-                        <img class="slide" src="/shopImages/LEGENDSNEVERDIE.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/PleasuresShirt.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/RassvetCorduroyNAVY.png" alt="Image 4">
-                    </div> 
-                    <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
+            <div class="list-wrapper">
+                <ul class="list">
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="content">
+                            <img src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy"/>
+                        </div>
+                    </li>
+                </ul>
+                <button onclick="handleClick('previous')" class="button button--previous" type="button">➜</button>
+                <button onclick="handleClick('next')" class="button button--next" type="button">➜</button>
+            </div>
+            <script>
+                const list = document.querySelector(".list");
+                const item = document.querySelector(".item");
+                const itemWidth = item.offsetWidth
+
+                function handleClick(direction){
+                    if(direction == "previous"){
+                        list.scrollBy({ left: -itemWidth, behavior: "smooth"});
+                    } else{
+                        list.scrollBy({ left: itemWidth, behavior: "smooth"});
+                    }
+                }
+            </script>
+
+
+            <div class="grid-module_column grid-module_main grid guide-module_content">
+                <div class="highlights-module_root">
+                    <section id="highlights" class="scrollable-section-modue_root">
+                        ::before
+                        <h2 class="highlights-module-title">Featured Items</h2>
+                        <div class="carousel-modules_root">
+                            <ol class="carousel-modules_list highlights-module_list" data-testid="highlights-list">
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                            ::after
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                            ::after
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="highlights-module_card">
+                                        <div class="highlights-module_card__titleContainer_g8AuOvgsWgmPknnNC3tMTg==">
+                                            <figure class="highlights-module_card__imageContainer_VohpW1vlpJLzHJok6TNxnw==">
+                                                <img class="highlights-module_card__image_hwE90F2GtAICINrRy9vFFA==" src="https://polarsteps.s3.amazonaws.com/584291743_767_1000.jpg" fetchpriority="low" loading="lazy">
+                                                <small class="highlights-module_card__attribution_-wbD+tvNT-Z9EziMbCtacA=="> 
+                                                    "Photo by"
+                                                    <a href="https://www.shutterstock.com/g/Darren%20Tierney">Darren Tierney</a> 
+                                                    "on"
+                                                    <a href="https://www.shutterstock.com">Shutterstock.com</a>
+                                                </small>
+                                            </figure>
+                                            <h3 class="highlights-module_card__title_Ch22SwHIDdBH7eFDoaOxkw==">Sensational shiraz</h3>
+                                        </div>
+                                        <p class="highlights-module_card__text_IhYp7wT7TFhKIItPEpEEjw==">This small but mighty valley produces over a fifth of Australia's wine, with shiraz the star of the show.</p>
+                                    </article>
+                                </li>
+                            </ol>
+                            <div class="carousel-modules_shadow_p0IenXGXwwPip0KUo0itNw== carousel-modules_right_M3qO+ux0HDIzeVEhtPMnyA== carousel-modules_dark_dMze4fdgbOKmM6Wcju6tZA== highlights-module_shadow_X3iLWEnhhkkMdTOvx8TO1Q==" style="opacity: 1;"></div>
+                            <button type="button" class="carousel-modules_button_yvloqwhOlvbMCBhPBEW2sQ== carousel-modules_right_M3qO+ux0HDIzeVEhtPMnyA== carousel-modules_dark_dMze4fdgbOKmM6Wcju6tZA== highlights-module_button_+yLMcto+uyAPLXONulD-Jg==" aria-label="Next" style="opacity: 1;">
+                                <div class="carousel-modules_button__iconContainer_9x8Tz-SZg9qWD1jJEYtXKQ==">
+                                    <svg class="icon icon-size-m carousel-modules_button__icon_tOF0w1zCKQHOldJ8NqjF7Q== carousel-modules_right_M3qO+ux0HDIzeVEhtPMnyA==" xmlns:xlink="http://www.w3.org/1999/xlink" data-testid="arrow-down-thin-icon" iconname="arrow-down-thin">
+                                        <use class="icon-color-unknown line-icon" xlink:href="#icon-arrow-down-thin" x="0" y="0"></use>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </section>
                 </div>
-                <script src="/js/carousel.js"></script>
-                <br><br>
-                <button class="shop-button" type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
-                <br><br>
-            </section>
+            </div>
+
         </main>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
