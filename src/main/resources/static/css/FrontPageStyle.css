@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: #f1e8e3;
 }
 
 /* General styling for the header */
@@ -39,6 +40,7 @@ body {
 }
 
 .nav-container {
+    width: 100%;
     max-width: 1370px;
     display: flex;
     height: 100%;
@@ -102,6 +104,7 @@ body {
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
     top: 50px;
+    border-radius: 5px;
 }
 
 .nav_dropdown a {
@@ -109,10 +112,12 @@ body {
     color: black;
     padding: 10px;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .nav_dropdown a:hover {
     background-color: #ccc;
+    border-radius: 5px;
 }
 
 .nav_lvl1:hover .nav_dropdown{
@@ -145,71 +150,6 @@ body {
     box-sizing: inherit; 
 }
 
-.carousel-container {
-    position: relative;
-    width: 100%;            
-    max-width: 800px;       
-    margin: auto;           
-    overflow: hidden;        
-}
-
-.carousel-slides {
-    display: flex;         
-    transition: transform 0.5s ease-in-out; 
-}
-
-.slide {
-    width:300px; 
-    height: 200px       
-}
-
-.slide.active {
-    display: block;          
-}
-
-/* Arrow button styles */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5); 
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-.featured-items{
-    text-align: center;
-}
-
-.shop-button{
-    background-color: #ccc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    
-}
-
-.shop-button:hover{
-    background-color: #b1b0b0;
-}
 
 /* Overlay video content */
 .videoWrapper{
@@ -217,6 +157,7 @@ body {
     width: 100%;
     height: auto;
     padding-bottom: 56.25%;
+    margin-top: 2vw;
     overflow: hidden;
 }
 
@@ -294,10 +235,134 @@ body {
     background-color: darkred;
 }
 
+
+/* This is for the slider */
+
+.box{
+	width:300px;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 25px;
+}
+.slide-img{
+	height: 450px;
+	position:relative;
+}
+.slide-img img{
+	width:100%;
+	height: 100%;
+	object-fit: cover;
+	box-sizing: border-box;
+}
+.detail-box{
+	width: 100%;
+display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	font-family: calibri;
+}
+.type{
+	display: flex;
+	flex-direction: column;
+}
+.type a{
+	color:#222222;
+	margin: 5px 0px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	padding-right: 8px;
+}
+.type span{
+	color:rgba(26,26,26,0.5);
+}
+.price{
+	color: #333333;
+	font-weight: 600;
+	font-size: 1.1rem;
+	font-family: poppins;
+	letter-spacing: 0.5px;
+}
+.overlay{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width:100%;
+	height: 100%;
+	background-color: rgba(92,95,236,0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.buy-btn{
+	width:160px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFFFFF;
+	color:#252525;
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-family: calibri;
+	border-radius: 20px;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+}
+.buy-btn:hover{
+	color:#FFFFFF;
+	background-color: #f15fa3;
+	transition: all ease 0.3s;
+}
+.overlay{
+	visibility: hidden;
+}
+.slide-img:hover .overlay{
+	visibility: visible;
+	animation:fade 0.5s;
+}
+ 
+@keyframes fade{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.slider{
+    width:100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-top: 0px;
+}
+
+.slider-title {
+    font-family: 'Arial', sans-serif; /* Customize font */
+    font-size: 1.5rem; /* Adjust size */
+    font-weight: bold;
+    color: #333; /* Text color */
+    margin-bottom: 0px; /* Space between title and slider */
+    margin-top: 2vw;
+    padding-left: 40px;
+    padding-bottom: 0px;
+}
+
+.slider-container{
+    width:100%;
+	height: auto;
+}
+
+ 
+
 /* Footer Styling */
 footer {
     padding: 20px;
-    background-color: #f1e8e3;
+    background-color: rgb(241, 232, 227);
     color: #333;
     text-align: left;
 }

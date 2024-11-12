@@ -1,35 +1,27 @@
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const maxItemsPerSlide = 3;
+$(document).ready(function() {
+    $('#autoWidth').lightSlider({
+        autoWidth:true,
+        loop:true,
+        onSliderLoad: function() {
+            $('#autoWidth').removeClass('cS-hidden');
+        } 
+    });  
 
-function showSlide(index) {
-    // Hide all slides first
-    slides.forEach((slide) => {
-        slide.style.display = 'none';
+    $('#autoWidth2').lightSlider({
+        autoWidth:true,
+        loop:true,
+        onSliderLoad: function() {
+            $('#autoWidth2').removeClass('cS-hidden');
+        } 
     });
 
-    // Calculate start and end index for the visible items
-    const startIndex = (index + slides.length) % slides.length;
-    const endIndex = (startIndex + maxItemsPerSlide) % slides.length;
-
-    // Display the three items
-    for (let i = 0; i < maxItemsPerSlide; i++) {
-        const slideIndex = (startIndex + i) % slides.length;
-        slides[slideIndex].style.display = 'block';
-    }
-}
-
-function nextSlide() {
-    currentSlideIndex = (currentSlideIndex + maxItemsPerSlide) % slides.length;
-    showSlide(currentSlideIndex);
-}
-
-function prevSlide() {
-    currentSlideIndex = (currentSlideIndex - maxItemsPerSlide + slides.length) % slides.length;
-    showSlide(currentSlideIndex);
-}
-
-// Initial display of slides
-showSlide(currentSlideIndex);
+    $('#autoWidth3').lightSlider({
+        autoWidth:true,
+        loop:true,
+        onSliderLoad: function() {
+            $('#autoWidth3').removeClass('cS-hidden');
+        } 
+    });
+  });
 
 
