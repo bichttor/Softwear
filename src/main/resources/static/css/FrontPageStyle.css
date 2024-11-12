@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: #f1e8e3;
 }
 
 /* General styling for the header */
@@ -103,6 +104,7 @@ body {
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
     top: 50px;
+    border-radius: 5px;
 }
 
 .nav_dropdown a {
@@ -110,10 +112,12 @@ body {
     color: black;
     padding: 10px;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .nav_dropdown a:hover {
     background-color: #ccc;
+    border-radius: 5px;
 }
 
 .nav_lvl1:hover .nav_dropdown{
@@ -146,21 +150,6 @@ body {
     box-sizing: inherit; 
 }
 
-.shop-button{
-    background-color: #ccc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    
-}
-
-.shop-button:hover{
-    background-color: #b1b0b0;
-}
 
 /* Overlay video content */
 .videoWrapper{
@@ -168,6 +157,7 @@ body {
     width: 100%;
     height: auto;
     padding-bottom: 56.25%;
+    margin-top: 2vw;
     overflow: hidden;
 }
 
@@ -343,11 +333,28 @@ display: flex;
 	}
 }
 .slider{
-	width:100%;
-	height: 100vh;
+    width:100%;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    margin-top: 0px;
+}
+
+.slider-title {
+    font-family: 'Arial', sans-serif; /* Customize font */
+    font-size: 1.5rem; /* Adjust size */
+    font-weight: bold;
+    color: #333; /* Text color */
+    margin-bottom: 0px; /* Space between title and slider */
+    margin-top: 2vw;
+    padding-left: 40px;
+    padding-bottom: 0px;
+}
+
+.slider-container{
+    width:100%;
+	height: auto;
 }
 
  
