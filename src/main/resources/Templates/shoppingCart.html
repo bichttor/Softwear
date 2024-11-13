@@ -1,29 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="/css/FrontPageStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <head>
         <title> Softwear Shopping Cart Page</title>
     </head>
     <body>
         <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
-        <header>
-            <h1>Softwear</h1>
-            <nav>   
-                <ul>
-                    <li><a th:href="@{/}">Home</a></li>
-                    <li>
-                        <a th:href="@{/catalog}">Shop by Category</a>
-                        <ul>
-                            <li><a th:href="@{/catalog}">Shop All</a></li>
-                            <li><a th:href="@{/catalog}">Shirts</a></li>
-                            <li><a th:href="@{/catalog}">Pants</a></li>
-                            <li><a th:href="@{/catalog}">Shoes</a></li>
-                        </ul>
-                    </li>
-                    <li><a th:href="@{/cart}">Shopping Cart</a></li>
-                </ul>
-            </nav>
-            <hr>
-            <br>
+        <header id="header-nav" class="header js-header">
+            <div class="header_wrap gutter">
+                <div class="nav-container">
+                    <a class="header_home" th:href="@{/}"><img src="/shopImages/logo2.png"></a>
+                    <nav class="nav_menu">
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">
+                                    <a th:href="@{/}">Home</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Shop</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
+                                <a href="javascript:navigate('all','all')">All</a>
+                                <a href="javascript:navigate('all','shirts')">Shirts</a>
+                                <a href="javascript:navigate('all','pants')">Pants</a>
+                                <a href="javascript:navigate('all','shoes')">Shoes</a>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Women</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
+                                <a href="javascript:navigate('womens','all')">All</a>
+                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('womens','pants')">Pants</a>
+                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
+                            </div>
+                        </div>
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Men</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
+                                <a href="javascript:navigate('mens','all')">All</a>
+                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('mens','pants')">Pants</a>
+                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
+                            </div>
+                        </div>
+
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">Help</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                            <div class="nav_dropdown">
+                                <a th:href="@{/faq}">FAQ</a>
+                                <a th:href="@{/contact}">Contact Us</a>
+                            </div>
+                        </div>
+
+                        <div tabindex="0" class="nav_lvl1">
+                            <div class="nav_titleCont">
+                                <p class="nav_title">About Us</p>
+                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class-="header_right">
+                        <div class="nav_searchCont nav_searchCont--close">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="nav_accountCont nav_accountCont">
+                            <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                        </div>
+                        <div class="nav_cartCont nav_cartCont">
+                            <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
         <section>
             <h2>SHOPPING CART</h2>
