@@ -15,6 +15,9 @@ public class CustomerService {
 
     public Customer getcustomerId(int id){
         return repo.findById(id).orElse(new Customer());
+    }
+    public boolean validateLogin(String customerEmail, String customerPassword){
+        return repo.findByCustomerEmailAndCustomerPassword(customerEmail, customerPassword).isPresent();
     }   
 
     public void addcustomer(Customer customer){

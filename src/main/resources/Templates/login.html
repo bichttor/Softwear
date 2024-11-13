@@ -87,7 +87,7 @@
         <h1>Softwear</h1>
         <h3>Enter your login information</h3>
      </div>
-     <form action="">
+     <form th:action="@{/login}" method="post"><form action="">
         <label for="first">Username:</label>
         <input type="text" id="first" name="first"
             placeholder="Enter your Username" required>
@@ -101,6 +101,8 @@
         <input type="checkbox" id="checkbox" name="checkbox"
             placeholder="Remember Me">
      </form>
+     
+
 </body>
 
 </html>

@@ -25,6 +25,9 @@ public class Customer {
     @Column(name = "customer_email") 
     private String customerEmail;
 
+    @Column(name = "customer_password") 
+    private String customerPassword;
+
     @Column(name = "customer_phone") 
     private String customerPhone;
 
@@ -33,11 +36,12 @@ public class Customer {
     private Address address;
     
     public Customer(){}
-    public Customer(String customerFname, String customerLname, String customerEmail, String customerPhone, Address address){
+    public Customer(String customerFname, String customerLname, String customerEmail, String customerPhone, String customerPassword, Address address){
         this.customerFname = customerFname;
         this.customerLname = customerLname;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
+        this.customerPassword = customerPassword;
         this.address = address;
     }
     public void setId(int id){
@@ -58,6 +62,9 @@ public class Customer {
     }
     public String getcustomerPhone(){
         return this.customerPhone;
+    }
+    public String getcustomerPassword(){
+        return this.customerPassword;
     }
     public Address getAddress(){
         return this.address;
