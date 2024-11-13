@@ -1,20 +1,14 @@
 /*loginStyle*/
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
 
 /* General styling for the header */
 .header {
-    z-index: 2;
+    z-index: 3;
 }
 
 .header {
     position: fixed;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     width: 100%;
     height: 70px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -32,7 +26,7 @@ body {
 .header_wrap {
     width: 100%;
     height: 70px;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
 }
 
 *, :after, :before {
@@ -40,6 +34,7 @@ body {
 }
 
 .nav-container {
+    width: 100%;
     max-width: 1370px;
     display: flex;
     height: 100%;
@@ -86,6 +81,11 @@ body {
     font-size: 18px;
 }
 
+.nav_title a{
+    text-decoration: none;
+    color: black;
+}
+
 .nav_carrot {
     fill:#333;
 }
@@ -93,11 +93,12 @@ body {
 .nav_dropdown {
     display: none;
     position: absolute;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
     top: 50px;
+    border-radius: 5px;
 }
 
 .nav_dropdown a {
@@ -105,10 +106,12 @@ body {
     color: black;
     padding: 10px;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .nav_dropdown a:hover {
     background-color: #ccc;
+    border-radius: 5px;
 }
 
 .nav_lvl1:hover .nav_dropdown{
@@ -141,21 +144,23 @@ body {
     box-sizing: inherit; 
 }
 
+/*LoginPage HTML CSS BELOW */
 
 body{
-    display:Flex;
+    
     align-items:center;
     justify-content: center;
     font-family: Arial, sans-serif;
     line-height: 1.5;
     min-height: 100vh;
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     flex-direction: column;
     margin: 0;
+    
 }
 
 .main{
-    background-color: #fcecec;
+    background-color: #f1e8e3;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0,2);
     padding:10px 20px;
@@ -191,4 +196,4 @@ button {
     display:flex;
     justify-content: center;
     align-items: center;
-}
+} 
