@@ -24,7 +24,9 @@ public class EmployeeService {
     public void updateEmployee(Employee employee){
         repo.save(employee);
     }
-
+    public boolean validateLogin(int id, String employeePassword){
+        return repo.findByIdAndEmployeePassword(id, employeePassword).isPresent();
+    }
     public void deleteEmployee(int id){
         repo.deleteById(id);
     }

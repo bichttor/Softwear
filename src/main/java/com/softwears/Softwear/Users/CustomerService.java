@@ -8,13 +8,16 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
     @Autowired
     private CustomerRepository repo;
-
+     
     public List<Customer> getAllcustomers(){
         return repo.findAll();
     }
 
     public Customer getcustomerId(int id){
         return repo.findById(id).orElse(new Customer());
+    }
+    public boolean validateLogin(String customerEmail, String customerPassword){
+        return repo.findByCustomerEmailAndCustomerPassword(customerEmail, customerPassword).isPresent();
     }   
 
     public void addcustomer(Customer customer){
@@ -28,4 +31,5 @@ public class CustomerService {
     public void deletecustomer(int id){
         repo.deleteById(id);
     }
+
 }

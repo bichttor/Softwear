@@ -6,6 +6,12 @@
         <title> Softwear - Home </title>
         <link rel="stylesheet" href="/css/FrontPageStyle.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!--light-slider.css------------->
+        <link rel="stylesheet" type="text/css" href="css/lightslider.css">
+        <!--Jquery-------------------->
+        <script type="text/javascript" src="js/Jquery.js"></script>
+        <!--lightslider.js--------------->
+        <script type="text/javascript" src="js/lightslider.js"></script>
     </head>
     <body>
         <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
@@ -30,10 +36,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('all','all')">All</button>
-                                <button onclick="navigate('all','shirts')">Shirts</button>
-                                <button onclick="navigate('all','pants')">Pants</button>
-                                <button onclick="navigate('all','shoes')">Shoes</button>
+                                <a href="javascript:navigate('all','all')">All</a>
+                                <a href="javascript:navigate('all','shirts')">Shirts</a>
+                                <a href="javascript:navigate('all','pants')">Pants</a>
+                                <a href="javascript:navigate('all','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -45,10 +51,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('womens','all')">All</button>
-                                <button onclick="navigate('womens','shirts')">Shirts</button>
-                                <button onclick="navigate('womens','pants')">Pants</button>
-                                <button onclick="navigate('womens','shoes')">Shoes</button>
+                                <a href="javascript:navigate('womens','all')">All</a>
+                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('womens','pants')">Pants</a>
+                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -60,10 +66,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('mens','all')">All</button>
-                                <button onclick="navigate('mens','shirts')">Shirts</button>
-                                <button onclick="navigate('mens','pants')">Pants</button>
-                                <button onclick="navigate('mens','shoes')">Shoes</button>
+                                <a href="javascript:navigate('mens','all')">All</a>
+                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('mens','pants')">Pants</a>
+                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
                             </div>
                         </div>
 
@@ -82,7 +88,7 @@
 
                         <div tabindex="0" class="nav_lvl1">
                             <div class="nav_titleCont">
-                                <p class="nav_title">About Us</p>
+                                <p class="nav_title"><a th:href="@{/about}">About</a></p>
                                 <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
                                     <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                 </svg>
@@ -94,7 +100,8 @@
                             <i class="fas fa-search"></i>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
-                            <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                            <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
+                                                                                                                                                    IF LOGGED IN OR LOGIN IF NOT-->
                         </div>
                         <div class="nav_cartCont nav_cartCont">
                             <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
@@ -136,36 +143,485 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- This is where the slider should go -->
+                                 <div class="slider-container">
+                                    <h1 class="slider-title">New Arrivals</h1>
+                                    <section class="slider">
+                                        <ul id="autoWidth" class="cs-hidden">
+                                        <!--1------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Cardigan with Collar.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Collared Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$230</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--2------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Follow The Leader T-Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Follow The Leader T-Shirt</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$40</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--3------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Slim Fit Cargo Joggers.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Slim Fit Cargo Joggers</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$90</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--4------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Pleat-Front Twill Pants.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Pleat-Front Twill Pants</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$180</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--5------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\unisex\Jarritos x Nike Dunk SB.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Jarritos x Nike Dunk SB</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$130</a>
+                                                    </div>
+                                                </div>	
+                                            </li>
+                                            <!--6------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Satin Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Rabbed Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                        </ul>
+                                    </section>
+                                </div>
+                                <!-- This is where the second slider should go -->
+                                <div class="slider-container">
+                                    <h1 class="slider-title">Men's Fashion</h1>
+                                    <section class="slider">
+                                        <ul id="autoWidth2" class="cs-hidden">
+                                        <!--1------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Cardigan with Collar.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Collared Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$45</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--2------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Follow The Leader T-Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Follow The Leader T-Shirt</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--3------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Slim Fit Cargo Joggers.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Slim Fit Cargo Joggers</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$37</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--4------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Pleat-Front Twill Pants.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Pleat-Front Twill Pants</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--5------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\unisex\Jarritos x Nike Dunk SB.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Jarritos x Nike Dunk SB</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$130</a>
+                                                    </div>
+                                                </div>	
+                                            </li>
+                                            <!--6------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Satin Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Rabbed Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                        </ul>
+                                    </section>
+                                </div>
+                                <!-- This is where the third slider should go -->
+                                <div class="slider-container">
+                                    <h1 class="slider-title">Women's Fashion</h1>
+                                    <section class="slider">
+                                        <ul id="autoWidth3" class="cs-hidden">
+                                        <!--1------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Cardigan with Collar.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Collared Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$45</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--2------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Follow The Leader T-Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Follow The Leader T-Shirt</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--3------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\mens\Slim Fit Cargo Joggers.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Slim Fit Cargo Joggers</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$37</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--4------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Pleat-Front Twill Pants.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Pleat-Front Twill Pants</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                            <!--5------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\unisex\Jarritos x Nike Dunk SB.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Jarritos x Nike Dunk SB</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$130</a>
+                                                    </div>
+                                                </div>	
+                                            </li>
+                                            <!--6------------------------------------>	
+                                            <li class="item-a">
+                                                <!--box-slider--------------->
+                                                <div class="box">
+                                                    <!--img-box---------->
+                                                    <div class="slide-img">
+                                                        <img alt="1" src="\shopImages\womens\Satin Shirt.png">
+                                                        <!--overlayer---------->
+                                                        <div class="overlay">
+                                                        <!--buy-btn------>	
+                                                        <a href="#" class="buy-btn">Buy Now</a>	
+                                                        </div>
+                                                    </div>
+                                                    <!--detail-box--------->
+                                                    <div class="detail-box">
+                                                        <!--type-------->
+                                                        <div class="type">
+                                                            <a href="#">Rabbed Cardigan</a>
+                                                                <span>New Arrival</span>
+                                                        </div>
+                                                        <!--price-------->
+                                                        <a href="#" class="price">$23</a>
+                                                    </div>
+                                                </div>		
+                                            </li>
+                                        </ul>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <section>
-                <br>
-                <h2 class="featured-items">Featured Items</h2>
-                <p>
-                    The carousel js logic still needs to be corrected but its still rough 
-                </p>
-                <div class="carousel-container">
-                    <button class="prev" onclick="prevSlide()">&#10094;</button> <!-- Left Arrow -->
-                    <div class="carousel-slides">
-                        <img class="slide" src="/shopImages/mens/AirMagBTTF.png" alt="Image 1">
-                        <img class="slide" src="/shopImages/unisex/Foam Runners-Onyx.png" alt="Image 2">
-                        <img class="slide" src="/shopImages/unisex/Jarritos x Nike Dunk SB.png" alt="Image 3">
-                        <img class="slide" src="/shopImages/mens/LEGENDSNEVERDIE.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/unisex/PleasuresShirt.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/mens/RassvetCorduroyNAVY.png" alt="Image 4">
-                    </div> 
-                    <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
-                </div>
-                <script src="/js/carousel.js"></script>
-                
-                <br><br>
-                <button class="shop-button" type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
-                <br><br>
-            </section>
-        </main>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <footer>
@@ -192,4 +648,5 @@
         </footer>
     </body>
     <script src="/js/search.js"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
 </html>
