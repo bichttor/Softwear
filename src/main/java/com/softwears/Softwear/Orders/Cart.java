@@ -31,7 +31,7 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "customer_id", nullable = false)   
-    private Customer customerID;
+    private final Customer customerID;
 
     @Column(name = "order_id")
     private int orderID;

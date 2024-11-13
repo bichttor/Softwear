@@ -22,6 +22,9 @@ public class Employee {
     @Column(name = "employee_email") 
     private String employeeEmail;
 
+    @Column(name = "employee_password") 
+    private String employeePassword;
+
     @Column(name = "employee_phone") 
     private String employeePhone;
 
@@ -29,12 +32,13 @@ public class Employee {
     private String employeeRole;
 
     public Employee(){}
-    public Employee(String employeeFname, String employeeLname, String employeeEmail, String employeePhone, String employeeRole){
+    public Employee(String employeeFname, String employeeLname, String employeeEmail, String employeePhone,String employeePasssword, String employeeRole){
         this.employeeFname = employeeFname;
         this.employeeLname = employeeLname;
         this.employeeEmail = employeeEmail;
         this.employeePhone = employeePhone;
         this.employeeRole = employeeRole;
+        this.employeePassword = employeePasssword;
     }
     public void setId(int id){
         this.id = id;
@@ -57,5 +61,8 @@ public class Employee {
     }
     public String getemployeeRole(){
         return this.employeeRole;
+    }
+    public String getemployeePassword(){
+        return this.employeePassword;
     }
 }
