@@ -1,10 +1,15 @@
 package com.softwears.Softwear.Orders;
 
+import com.softwears.Softwear.Products.Product;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /*Using the Entity tag creates a table with the values given so no schema will have to be written 
@@ -25,15 +30,17 @@ public class OrderItems {
     @Column(name = "order_item_count") 
     private int orderCount;
 
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private Orders orderId;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
     public OrderItems() {}
 
-    public OrderItems(int orderPrice, int orderCount, int orderId, int productId){
+    public OrderItems(int orderPrice, int orderCount, Orders orderId, Product productId){
         this.orderPrice = orderPrice;
         this.orderCount = orderCount;
         this.orderId = orderId;
@@ -66,19 +73,19 @@ public class OrderItems {
         this.orderCount = orderCount;
     }
 
-    public int getOrderId() {
+    public Orders getOrderId() {
         return orderId;
     }
 
-    public void setOrderID(int orderId) {
+    public void setOrderID(Orders orderId) {
         this.orderId = orderId;
     }
 
-    public int getProductID() {
+    public Product getProductID() {
         return productId;
     }
 
-    public void setProductID(int productId) {
+    public void setProductID(Product productId) {
         this.productId = productId;
     }
 
