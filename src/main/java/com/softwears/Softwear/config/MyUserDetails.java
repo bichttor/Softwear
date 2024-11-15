@@ -7,14 +7,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.softwears.Softwear.Users.Customer;
+import com.softwears.Softwear.Users.Users;
 
 public class MyUserDetails implements UserDetails{
 
-    private final Customer customer;
+    private final Users user;
 
-    public MyUserDetails(Customer customer){
-        this.customer = customer;
+    public MyUserDetails(Users user){
+        this.user = user;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -23,12 +23,12 @@ public class MyUserDetails implements UserDetails{
 
     @Override
     public String getPassword() {
-        return customer.getcustomerPassword();
+        return user.getuserPassword();
     }
 
     @Override
     public String getUsername() {
-        return customer.getcustomerEmail();
+        return user.getuserEmail();
     }
 
 }

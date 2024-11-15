@@ -1,6 +1,6 @@
 package com.softwears.Softwear.Orders;
 
-import com.softwears.Softwear.Users.Customer;
+import com.softwears.Softwear.Users.Users;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,24 +31,24 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "customer_id", nullable = false)   
-    private final Customer customerID;
+    private final Users customerID;
 
     @Column(name = "order_id")
     private int orderID;
 
-    public Cart(Customer customerID){
+    public Cart(Users customerID){
         this.customerID = customerID;
         this.cartPrice = 0.00;
         this.cartCount = 0;
     }
 
-    public Cart(Customer customerID, double cartPrice, int cartCount){
+    public Cart(Users customerID, double cartPrice, int cartCount){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
     } 
 
-    public Cart(Customer customerID, double cartPrice, int cartCount, int orderID){
+    public Cart(Users customerID, double cartPrice, int cartCount, int orderID){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
@@ -83,7 +83,7 @@ public class Cart {
         this.cartCount = cartCount;
     }
 
-    public Customer getCustomerID() {
+    public Users getCustomerID() {
         return customerID;
     }
     public int getOrderID() {
