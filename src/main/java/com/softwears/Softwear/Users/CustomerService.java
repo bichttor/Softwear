@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
     @Autowired
     private CustomerRepository repo;
-
+     
     public List<Customer> getAllcustomers(){
         return repo.findAll();
     }
@@ -31,4 +31,5 @@ public class CustomerService {
     public void deletecustomer(int id){
         repo.deleteById(id);
     }
+
 }
