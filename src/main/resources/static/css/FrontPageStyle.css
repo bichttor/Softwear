@@ -360,12 +360,85 @@ display: flex;
  
 
 /* Footer Styling */
-footer {
-    padding: 20px;
-    background-color: rgb(241, 232, 227);
-    color: #333;
-    text-align: left;
+.footer {
+    background-color: #222;
+    padding: 20px 0;
+    color: #bbb;
 }
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin: 20px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-bottom a:hover {
+    color: #fff;
+}
+
 
 hr {
     margin: 10px 0;
