@@ -19,6 +19,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int    id;
+
     @Column(name = "product_name") 
     private String productName;
 
@@ -39,6 +40,7 @@ public class Product {
 
     @Column(name = "product_image") 
     private String productImage;
+    
     public Product(){}
 
     public Product(String name, double price, String description, String type, int sales, String image, String gender){

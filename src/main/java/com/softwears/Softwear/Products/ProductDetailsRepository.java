@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductDetailsRepository extends JpaRepository<ProductDetails, Integer>{
-    List<ProductDetails> findByProductId(int productId);
+    List<ProductDetails> findByProductId(Product productId);
     List<ProductDetails> findByProductDetailsId(int productDetailsId);
     List<ProductDetails> findByProductColor(String productColor);
     List<ProductDetails> findByProductSize(String productSize);

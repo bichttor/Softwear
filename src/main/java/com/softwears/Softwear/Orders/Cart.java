@@ -1,10 +1,14 @@
 package com.softwears.Softwear.Orders;
 
+import com.softwears.Softwear.Users.Customer;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -18,7 +22,7 @@ public class Cart {
     /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private int cartId;
 
     @Column(name = "cart_price") 
     private double cartPrice;
@@ -26,26 +30,27 @@ public class Cart {
     @Column(name = "cart_count") 
     private int cartCount;
 
-    @OneToOne
-    @Column(name = "customer_id")
-    private int customerID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customerID;
 
-    @Column(name = "order_id")
-    private int orderID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private Orders orderID;
 
-    public Cart(int customerID){
+    public Cart(Customer customerID){
         this.customerID = customerID;
         this.cartPrice = 0.00;
         this.cartCount = 0;
     }
 
-    public Cart(int customerID, double cartPrice, int cartCount){
+    public Cart(Customer customerID, double cartPrice, int cartCount){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
     } 
 
-    public Cart(int customerID, double cartPrice, int cartCount, int orderID){
+    public Cart(Customer customerID, double cartPrice, int cartCount, Orders orderID){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
@@ -55,11 +60,11 @@ public class Cart {
     /* Getters & Setters */
 
     public int getId() {
-        return id;
+        return cartId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int cartId) {
+        this.cartId = cartId;
     }
 
     public double getCartPrice() {
@@ -78,19 +83,19 @@ public class Cart {
         this.cartCount = cartCount;
     }
 
-    public int getCustomerID() {
+    public Customer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(Customer customerID) {
         this.customerID = customerID;
     }
 
-    public int getOrderID() {
+    public Orders getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(Orders orderID) {
         this.orderID = orderID;
     }
 
