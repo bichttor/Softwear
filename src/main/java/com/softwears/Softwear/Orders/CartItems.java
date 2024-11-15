@@ -1,10 +1,15 @@
 package com.softwears.Softwear.Orders;
 
+import com.softwears.Softwear.Products.Product;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /*Using the Entity tag creates a table with the values given so no schema will have to be written 
@@ -25,15 +30,17 @@ public class CartItems {
     @Column(name = "cart_item_count") 
     private int cartCount;
 
-    @Column(name = "cart_id")
-    private int cartId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id")
+    private Cart cartId;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
     public CartItems() {}
 
-    public CartItems(int cartPrice, int cartCount, int cartId, int productId){
+    public CartItems(int cartPrice, int cartCount, Cart cartId, Product productId){
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
         this.cartId = cartId;
@@ -66,19 +73,19 @@ public class CartItems {
         this.cartCount = cartCount;
     }
 
-    public int getCartID() {
+    public Cart getCartID() {
         return cartId;
     }
 
-    public void setCartID(int cartId) {
+    public void setCartID(Cart cartId) {
         this.cartId = cartId;
     }
 
-    public int getProductID() {
+    public Product getProductID() {
         return productId;
     }
 
-    public void setProductID(int productId) {
+    public void setProductID(Product productId) {
         this.productId = productId;
     }
 

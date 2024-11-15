@@ -2,6 +2,7 @@ package com.softwears.Softwear.Orders;
 
 import com.softwears.Softwear.Users.Users;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Cart {
     /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private int cartId;
 
     @Column(name = "cart_price") 
     private double cartPrice;
@@ -33,8 +34,9 @@ public class Cart {
     @JoinColumn(name = "customer_id", nullable = false)   
     private final Users customerID;
 
-    @Column(name = "order_id")
-    private int orderID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private Orders orderID;
 
     public Cart(Users customerID){
         this.customerID = customerID;
@@ -48,7 +50,7 @@ public class Cart {
         this.cartCount = cartCount;
     } 
 
-    public Cart(Users customerID, double cartPrice, int cartCount, int orderID){
+    public Cart(Users customerID, double cartPrice, int cartCount, Orders orderID){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
@@ -60,11 +62,11 @@ public class Cart {
     /* Getters & Setters */
 
     public int getId() {
-        return id;
+        return cartId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int cartId) {
+        this.cartId = cartId;
     }
 
     public double getCartPrice() {
@@ -86,11 +88,12 @@ public class Cart {
     public Users getCustomerID() {
         return customerID;
     }
-    public int getOrderID() {
+
+    public Orders getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(Orders orderID) {
         this.orderID = orderID;
     }
 
