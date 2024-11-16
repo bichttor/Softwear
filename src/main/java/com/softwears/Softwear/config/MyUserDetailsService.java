@@ -24,9 +24,11 @@ public class MyUserDetailsService implements UserDetailsService{
         Optional<Users> userOptional= repo.findByuserEmail(username);
         if(userOptional.isPresent()){
             Users user = userOptional.get();
+            String role = "ROLE_" + user.getuserRole();
             return User.builder()
                 .username(user.getuserEmail())
                 .password(user.getuserPassword())
+                .authorities(role)
                 .build();
         }
         else{

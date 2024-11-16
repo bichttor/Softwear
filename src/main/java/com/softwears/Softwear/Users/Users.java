@@ -1,4 +1,5 @@
 package com.softwears.Softwear.Users;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Users {
     private String userPhone;
 
     @ManyToOne
-    @JoinColumn(name = "address_id", nullable = true)
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @Column(name = "user_role") 
