@@ -20,7 +20,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(request -> request.requestMatchers("/profile").authenticated() // Only the /profile page requires authentication
-            .requestMatchers("/employee").hasRole("EMPLOYEE")
+            .requestMatchers("/view-stock").hasRole("EMPLOYEE")
             .anyRequest().permitAll())
             .formLogin(login -> login
                     .loginPage("/login")

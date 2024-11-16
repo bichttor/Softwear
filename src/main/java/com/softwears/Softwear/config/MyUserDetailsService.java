@@ -3,7 +3,6 @@ package com.softwears.Softwear.config;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,12 +23,7 @@ public class MyUserDetailsService implements UserDetailsService{
         Optional<Users> userOptional= repo.findByuserEmail(username);
         if(userOptional.isPresent()){
             Users user = userOptional.get();
-            String role = "ROLE_" + user.getuserRole();
-            return User.builder()
-                .username(user.getuserEmail())
-                .password(user.getuserPassword())
-                .authorities(role)
-                .build();
+            return new MyUserDetails(user);
         }
         else{
             throw new UsernameNotFoundException(username);

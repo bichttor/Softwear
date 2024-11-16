@@ -21,7 +21,7 @@ public class UsersService {
         repo.save(user);
     }
 
-    public void updateuser(Users user){
+    public void updateUser(Users user){
         repo.save(user);
     }
 
