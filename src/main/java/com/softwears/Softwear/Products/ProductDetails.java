@@ -1,10 +1,13 @@
 package com.softwears.Softwear.Products;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,12 +30,13 @@ public class ProductDetails {
     @Column(name = "product_size")
     private String productSize;
 
-    @Column(name = "product_id")
-    private int productId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fkey_product_id")
+    private Product productId;
 
     public ProductDetails() {}
 
-    public ProductDetails(String color, String description, double weight, String size, int id) {
+    public ProductDetails(String color, String description, double weight, String size, Product id) {
         this.productColor = color;
         this.productDescription = description;
         this.productWeight = weight;
@@ -59,7 +63,7 @@ public class ProductDetails {
     public String getSize() {
         return productSize;
     }
-    public int getProductId() {
+    public Product getProductId() {
         return productId;
     }
 }

@@ -1,10 +1,15 @@
 package com.softwears.Softwear.Orders;
 
+import com.softwears.Softwear.Users.Users;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /*Using the Entity tag creates a table with the values given so no schema will have to be written 
@@ -12,8 +17,8 @@ import jakarta.persistence.Table;
 */
 
 @Entity
-@Table(name = "order") /* set for data integrity */
-public class Order {
+@Table(name = "orders") /* set for data integrity */
+public class Orders {
     /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,12 +33,14 @@ public class Order {
     @Column(name = "order_price")
     private int orderPrice;
 
-    @Column(name = "customer_id")
-    private int customerId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fkey_customer_id")
+    //@Column(name = "customer_id")
+    private Users customerId;
 
-    public Order() {}
+    public Orders() {}
 
-    public Order(String orderDate, int orderStatus, int orderPrice, int customerId){
+    public Orders(String orderDate, int orderStatus, int orderPrice, Users customerId){
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.orderPrice = orderPrice;
@@ -74,11 +81,11 @@ public class Order {
         this.orderPrice = orderPrice;
     }
 
-    public int getCustomerId() {
+    public Users getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Users customerId) {
         this.customerId = customerId;
     }
 

@@ -66,6 +66,53 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
     <!-- Main Content -->
     <main>
         <section class="catalog">
+			
+            <div class="grid-container">
+                <div th:each="product : ${products}" class="grid-item">
+
+                    <div class="product-image">
+                        <img th:src="${product.productImage}" alt="Product Image" />
+                    </div>
+
+                    <div class="product-name" th:text="${product.productName}"></div>
+                    <div class="product-description" th:text="${product.productDescription}"></div>
+                    <div class="product-price" th:text="${product.productPrice}"></div>
+                    
+                    <!--
+                    <div class="product-id" th:text="${product.id}"></div>
+                    <div class="product-type" th:text="${product.productType}"></div>
+                    <div class="product-gender" th:text="${product.productGender}"></div>
+                    
+                    -->
+                </div>
+            </div>
+            
+ <!-- 
+            <div class="grid-container">
+                <div class="grid-header">Image</div>
+                <div class="grid-header">ID</div>
+                <div class="grid-header">Product Name</div>
+                <div class="grid-header">Description</div>
+                <div class="grid-header">Type</div>
+                <div class="grid-header">Price</div>
+                <div class="grid-header">Gender</div>
+
+            
+                <div th:each="product : ${products}" class="grid-item">
+                    <div th:text="${product.id}"></div>
+                    <div th:text="${product.productName}"></div>
+                    <div th:text="${product.productDescription}"></div>
+                    <div th:text="${product.productType}"></div>
+                    <div th:text="${product.productPrice}"></div>
+                    <div th:text="${product.productGender}"></div>
+                    <div>
+                        <img th:src="${product.productImage}" alt="Product Image" style="width:592px;height:592px;" />
+                    </div>
+                </div>
+            </div>
+            -->
+			
+			<!--
             <table border="1">
                 <thead>
                     <tr>
@@ -90,6 +137,9 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                     </tr>
                 </tbody>
             </table>
+
+-->
+
         </section>
     </main>
 

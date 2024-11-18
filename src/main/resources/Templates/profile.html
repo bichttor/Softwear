@@ -1,0 +1,54 @@
+<!-- THIS IS A TEST PROFILE -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <script>
+        // JavaScript to toggle sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll(".section");
+            sections.forEach(section => section.style.display = "none"); // Hide all sections
+            document.getElementById(sectionId).style.display = "block"; // Show the selected section
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome, <span th:text="${name}">User</span>!</h1>
+    <h3>Your Role: <span th:text="${role}"></span></h3>
+
+    <!-- Navigation Buttons -->
+    <button onclick="showSection('credentials')">Update Account</button>
+    <button onclick="showSection('orders')">Orders</button>
+    <button onclick="showSection('payments')">Payments</button>
+    <button onclick="showSection('addresses')">Addresses</button>
+
+    <div th:if="${role == 'EMPLOYEE'}">
+        <h2>View Stock</h2>
+        <button onclick="location.href='/view-stock'">View Stock</button>
+        <b>This is a test for viewing stock, employees should be able to update products in the store, essentially a UI for the databse</b>
+    </div>
+    <div id="credentials" class="section" style="display: none;">
+        <h2>Update Credentials</h2>
+        <form action="/credentials" method="post">
+            <b>This is a test for credentials, the user will be able to update their account: firstname, password, etc.</b>
+        </form>
+    </div>
+    <div id="orders" class="section" style="display: none;">
+        <h2>Previous Orders</h2>
+        <b>This is a test for orders, this will show the previous orders </b>
+    </div>
+    <div id="payments" class="section" style="display: none;">
+        <h2>Saved Payments</h2>
+        <b>This is a test for Payments, user can add or remove payments</b>
+    </div>
+    <div id="addresses" class="section" style="display: none;">
+        <h2>Saved Addresses</h2>
+        <b>This is a test for Addresses, user can add or remove addresses</b>
+    </div>
+    <!-- Log Out Button -->
+    <form action="/logout" method="post">
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>

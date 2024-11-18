@@ -1,0 +1,6 @@
+package com.softwears.Softwear.Users;
+
+public class SignUpController {
+/*will link to sign up controller when the page is made and will handle its logic 
+i.e creating an account and storing it in the database */
+}
