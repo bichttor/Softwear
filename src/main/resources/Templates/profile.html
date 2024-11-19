@@ -105,32 +105,22 @@
                 </div>
             </header>
         </body>
-
-    <script>
-        // JavaScript to toggle sections
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll(".section");
-            sections.forEach(section => section.style.display = "none"); // Hide all sections
-            document.getElementById(sectionId).style.display = "block"; // Show the selected section
-        }
-    </script>
+        <script src="/js/profilefuncs.js"></script>
 <main>
     <!-- Welcome Message -->
     <h1>Welcome, <span th:text="${fname}">User</span>!</h1>
-    <h3>Your Role: <span th:text="${role}"></span></h3>
 
     <!-- Navigation Buttons -->
-    <div class="navigation">
-        <button onclick="showSection('credentials')">Update Account</button>
-        <button onclick="showSection('orders')">Orders</button>
-        <button onclick="showSection('addresses')">Addresses</button>
+    
+        <button class="button" onclick="showSection('credentials')">Update Account</button>
+        <button class="button" onclick="showSection('orders')">Orders</button>
+        <button class="button" onclick="showSection('addresses')">Addresses</button>
         <div th:if="${role == 'EMPLOYEE'}">
-            <button onclick="showSection('stock')">Manage Stock</button>
+            <button class="button" onclick="showSection('stock')">Manage Stock</button>
         </div>
-    </div>
 
     <!-- CREDENTIALS -->
-    <div id="credentials" class="section active">
+    <section id="credentials">
         <h2>Credentials</h2>
             <span th:text="${fname}"></span>,
             <span th:text="${lname}"></span>,
@@ -147,15 +137,15 @@
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword">
             <br>
-            <button type="submit">Save Changes</button>
+            <button class="button2" type="submit">Save Changes</button>
         </form>
-    </div>
+    </section>
     <!--ORDERS SECTION-->
-    <div id="orders" class="section">
+    <section id="orders">
         <h2>Previous Orders</h2>
-    </div>
+    </section>
     <!--ADDRESS SECTION-->
-    <div id="addresses" class="section">
+    <section id="addresses">
         <h2>Saved Addresses</h2>
         <div th:each="address : ${address}">
             <p>
@@ -185,16 +175,45 @@
             <label for="country">Country:</label>
             <input type="text" id="country" name="country" required>
             <br>
-            <button type="submit">Save Address</button>
+            <button class="button2" type="submit">Save Address</button>
         </form>
-    </div>
+    </section>
     <!--STOCK SECTION-->
-    <div id="stock" class="section" th:if="${role == 'EMPLOYEE'}">
+    <section id="stock" th:if="${role == 'EMPLOYEE'}">
         <h2>Manage Stock</h2>
-        <form th:action="@{/profile/stock}" method="post">
-        <p>Employees can manage store inventory here.</p>
+        <form th:action="@{/profile/stock}" method="get">
+        <div class="nav_searchCont">
+            <input type="text" name="query" class="nav_searchInput" placeholder="Search...">
+            <button class="nav_searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Gender</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.productName}"></td>
+                    <td th:text="${product.productDescription}"></td>
+                    <td th:text="${product.productType}"></td>
+                    <td th:text="${product.productPrice}"></td>
+                    <td th:text="${product.productGender}"></td>
+                    <td><img th:src="${product.productImage}" alt="Product Image" style="width:100px;height:100px;"/></td>
+                </tr>
+            </tbody>
+        </table>
         </form> 
-    </div>
+    </section>
      <!-- Feedback Messages -->
      <div th:if="${message}" style="color: green;">
         <p th:text="${message}"></p>

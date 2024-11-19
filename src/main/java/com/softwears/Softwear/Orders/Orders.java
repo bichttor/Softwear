@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -28,19 +29,19 @@ public class Orders {
     private String orderDate;
 
     @Column(name = "order_status") 
-    private int orderStatus;
+    private String orderStatus;
 
     @Column(name = "order_price")
-    private int orderPrice;
+    private double orderPrice;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne /*changed to ManytoOne, to allow users to have multiple orders */
     @JoinColumn(name = "fkey_customer_id")
     //@Column(name = "customer_id")
     private Users customerId;
 
     public Orders() {}
 
-    public Orders(String orderDate, int orderStatus, int orderPrice, Users customerId){
+    public Orders(String orderDate, String orderStatus, double orderPrice, Users customerId){
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.orderPrice = orderPrice;
@@ -65,15 +66,15 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public int getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public int getOrderPrice() {
+    public double getOrderPrice() {
         return orderPrice;
     }
 

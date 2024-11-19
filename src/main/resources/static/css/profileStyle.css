@@ -145,7 +145,33 @@ body {
     text-decoration: none;
     color: inherit;
 }
-
+.nav_searchCont {
+    display: flex;            
+    justify-content: center;   
+    align-items: center;        
+    margin: 20px 0;             
+}
+.nav_searchInput{
+    width: 100%;                
+    max-width: 400px;           
+    padding: 10px 15px;         
+    font-size: 16px;            
+    border: 2px solid #ccc;     
+    border-radius: 25px;        
+    outline: none;              
+    transition: all 0.3s ease;  
+}
+.nav_searchButton{
+    background-color: #f1e8e3; 
+    color: black;              
+    padding: 10px 20px;        
+    font-size: 16px;           
+    border: none;             
+    border-radius: 25px;      
+    margin-left: 10px;         
+    cursor: pointer;          
+    transition: all 0.3s ease; 
+}
 *, :after, :before {
     box-sizing: inherit; 
 }
@@ -157,15 +183,53 @@ main {
 }
 
 section {
-    display: none; /* Initially hide all sections */
-        padding: 20px;
-        background-color: #f1e8e3;
-        color: #333;
-        text-align: left;
-
+    visibility: hidden; 
+    opacity: 0; 
+    height: 0;
+    overflow: hidden; 
+    padding: 0; 
+    background-color: #f1e8e3;
+    color: #333;
+    text-align: left;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
+
 .active {
-    display: block; /* Show active section */
+    visibility: visible; 
+    opacity: 1; 
+    height: auto;
+    padding: 20px; 
+}
+.button2{
+    background-color: #f1e8e3; 
+    color: black; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4); 
+}
+.button {
+    background-color: #f1e8e3; 
+    color: black;
+    border: none; 
+    padding: 12px 20px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8); 
+}
+
+/* Hover Effect */
+.button:hover {
+    background-color: #f1e8e3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-2px); 
+}
+
+/* Active/Pressed Effect */
+.button:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 /* Footer Styling */
 .footer {
@@ -261,11 +325,3 @@ main {
     text-align: left;
 }
 
-section {
-
-        padding: 20px;
-        background-color: #f1e8e3;
-        color: #333;
-        text-align: left;
-
-}
