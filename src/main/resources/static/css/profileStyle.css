@@ -1,0 +1,327 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #f1e8e3;
+}
+
+/* General styling for the header */
+.header {
+    z-index: 3;
+}
+
+.header {
+    position: fixed;
+    background-color: #f1e8e3;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.gutter {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.header_wrap {
+    width: 100%;
+    height: 70px;
+    background-color: #f1e8e3;
+}
+
+*, :after, :before {
+    box-sizing: border-box; 
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1370px;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.header_home img{
+    height: 60px;
+    max-width: 100%;
+}
+
+/* Navigation Menu */
+.nav_menu {
+    display: flex;     
+    gap: 16px;
+}
+
+/* Level 1 Menu Items */
+.nav_lvl1 {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.nav_lvl1:focus .nav_dropdown{
+    display: block;
+}
+
+.nav_titleCont {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.nav_title {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.nav_title a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav_carrot {
+    fill:#333;
+}
+
+.nav_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1e8e3;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 50px;
+    border-radius: 5px;
+}
+
+.nav_dropdown a {
+    display: block;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.nav_dropdown a:hover {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.nav_lvl1:hover .nav_dropdown{
+    display: block;
+}
+
+.header_right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+}
+
+.header_right {
+    position: relative;
+}
+
+.nav_searchCont, .nav_accountCont, .nav_cartCont {
+    display: inline-block;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.nav_cartCont a{
+    text-decoration: none;
+    color: inherit;
+}
+.nav_searchCont {
+    display: flex;            
+    justify-content: center;   
+    align-items: center;        
+    margin: 20px 0;             
+}
+.nav_searchInput{
+    width: 100%;                
+    max-width: 400px;           
+    padding: 10px 15px;         
+    font-size: 16px;            
+    border: 2px solid #ccc;     
+    border-radius: 25px;        
+    outline: none;              
+    transition: all 0.3s ease;  
+}
+.nav_searchButton{
+    background-color: #f1e8e3; 
+    color: black;              
+    padding: 10px 20px;        
+    font-size: 16px;           
+    border: none;             
+    border-radius: 25px;      
+    margin-left: 10px;         
+    cursor: pointer;          
+    transition: all 0.3s ease; 
+}
+*, :after, :before {
+    box-sizing: inherit; 
+}
+main {
+    padding: 100px;
+    background-color: #f1e8e3;
+    color: black;
+    text-align: left;
+}
+
+section {
+    visibility: hidden; 
+    opacity: 0; 
+    height: 0;
+    overflow: hidden; 
+    padding: 0; 
+    background-color: #f1e8e3;
+    color: #333;
+    text-align: left;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.active {
+    visibility: visible; 
+    opacity: 1; 
+    height: auto;
+    padding: 20px; 
+}
+.button2{
+    background-color: #f1e8e3; 
+    color: black; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4); 
+}
+.button {
+    background-color: #f1e8e3; 
+    color: black;
+    border: none; 
+    padding: 12px 20px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8); 
+}
+
+/* Hover Effect */
+.button:hover {
+    background-color: #f1e8e3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-2px); 
+}
+
+/* Active/Pressed Effect */
+.button:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+/* Footer Styling */
+.footer {
+    background-color: #222;
+    padding: 20px 0;
+    color: #bbb;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin: 20px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #bbb;
+}
+
+.footer-bottom a:hover {
+    color: #fff;
+}
+
+
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+main {
+    padding: 100px;
+    background-color: #f1e8e3;
+    color: black;
+    text-align: left;
+}
+

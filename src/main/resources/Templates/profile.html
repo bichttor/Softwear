@@ -1,54 +1,281 @@
-<!-- THIS IS A TEST PROFILE -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <script>
-        // JavaScript to toggle sections
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll(".section");
-            sections.forEach(section => section.style.display = "none"); // Hide all sections
-            document.getElementById(sectionId).style.display = "block"; // Show the selected section
-        }
-    </script>
-</head>
-<body>
-    <h1>Welcome, <span th:text="${name}">User</span>!</h1>
-    <h3>Your Role: <span th:text="${role}"></span></h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title> Softwear - Home </title>
+        <style>
+        
+        </style>
+        <link rel="stylesheet" href="/css/profileStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+    </head>
+        <body>
+            <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+            <header id="header-nav" class="header js-header">
+                <div class="header_wrap gutter">
+                    <div class="nav-container">
+                        <a class="header_home" th:href="@{/}"><img src="/shopImages/logo2.png"></a>
+                        <nav class="nav_menu">
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">
+                                        <a th:href="@{/}">Home</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">Shop</p>
+                                    <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                                <div class="nav_dropdown">
+                                    <button onclick="navigate('all','all')">All</button>
+                                    <button onclick="navigate('all','shirts')">Shirts</button>
+                                    <button onclick="navigate('all','pants')">Pants</button>
+                                    <button onclick="navigate('all','shoes')">Shoes</button>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">Women</p>
+                                    <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                                <div class="nav_dropdown">
+                                    <button onclick="navigate('womens','all')">All</button>
+                                    <button onclick="navigate('womens','shirts')">Shirts</button>
+                                    <button onclick="navigate('womens','pants')">Pants</button>
+                                    <button onclick="navigate('womens','shoes')">Shoes</button>
+                                </div>
+                            </div>
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">Men</p>
+                                    <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                                <div class="nav_dropdown">
+                                    <button onclick="navigate('mens','all')">All</button>
+                                    <button onclick="navigate('mens','shirts')">Shirts</button>
+                                    <button onclick="navigate('mens','pants')">Pants</button>
+                                    <button onclick="navigate('mens','shoes')">Shoes</button>
+                                </div>
+                            </div>
+    
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">Help</p>
+                                    <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                                <div class="nav_dropdown">
+                                    <a th:href="@{/faq}">FAQ</a>
+                                    <a th:href="@{/contact}">Contact Us</a>
+                                </div>
+                            </div>
+    
+                            <div tabindex="0" class="nav_lvl1">
+                                <div class="nav_titleCont">
+                                    <p class="nav_title">About Us</p>
+                                    <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class-="header_right">
+                            <div class="nav_searchCont nav_searchCont--close">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="nav_accountCont nav_accountCont">
+                                <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                            </div>
+                            <div class="nav_cartCont nav_cartCont">
+                                <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </body>
+        <script src="/js/profilefuncs.js"></script>
+<main>
+    <!-- Welcome Message -->
+    <h1>Welcome, <span th:text="${fname}">User</span>!</h1>
 
     <!-- Navigation Buttons -->
-    <button onclick="showSection('credentials')">Update Account</button>
-    <button onclick="showSection('orders')">Orders</button>
-    <button onclick="showSection('payments')">Payments</button>
-    <button onclick="showSection('addresses')">Addresses</button>
+    
+        <button class="button" onclick="showSection('credentials')">Update Account</button>
+        <button class="button" onclick="showSection('orders')">Orders</button>
+        <button class="button" onclick="showSection('addresses')">Addresses</button>
+        <div th:if="${role == 'EMPLOYEE'}">
+            <button class="button" onclick="showSection('stock')">Manage Stock</button>
+        </div>
 
-    <div th:if="${role == 'EMPLOYEE'}">
-        <h2>View Stock</h2>
-        <button onclick="location.href='/view-stock'">View Stock</button>
-        <b>This is a test for viewing stock, employees should be able to update products in the store, essentially a UI for the databse</b>
-    </div>
-    <div id="credentials" class="section" style="display: none;">
-        <h2>Update Credentials</h2>
-        <form action="/credentials" method="post">
-            <b>This is a test for credentials, the user will be able to update their account: firstname, password, etc.</b>
+    <!-- CREDENTIALS -->
+    <section id="credentials">
+        <h2>Credentials</h2>
+            <span th:text="${fname}"></span>,
+            <span th:text="${lname}"></span>,
+            <span th:text="${phone}"></span>,
+            <span th:text="${email}"></span> 
+           
+        <form th:action="@{/profile/credentials}" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:value="${userEmail}" required>
+            <br>
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <br>
+            <button class="button2" type="submit">Save Changes</button>
         </form>
-    </div>
-    <div id="orders" class="section" style="display: none;">
+    </section>
+    <!--ORDERS SECTION-->
+    <section id="orders">
         <h2>Previous Orders</h2>
-        <b>This is a test for orders, this will show the previous orders </b>
-    </div>
-    <div id="payments" class="section" style="display: none;">
-        <h2>Saved Payments</h2>
-        <b>This is a test for Payments, user can add or remove payments</b>
-    </div>
-    <div id="addresses" class="section" style="display: none;">
+    </section>
+    <!--ADDRESS SECTION-->
+    <section id="addresses">
         <h2>Saved Addresses</h2>
-        <b>This is a test for Addresses, user can add or remove addresses</b>
+        <div th:each="address : ${address}">
+            <p>
+                <b>Address:</b>
+                <span th:text="${address.addressStreet}"></span>, 
+                <span th:text="${address.addressCity}"></span>, 
+                <span th:text="${address.addressState}"></span>, 
+                <span th:text="${address.addressZip}"></span>, 
+                <span th:text="${address.addressCountry}"></span>
+            </p>
+        </div>
+    
+        <!-- UPDATE ADDRESS -->
+        <form th:action="@{/profile/addresses}" method="post">
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required>
+            <br>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+            <br>
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+            <br>
+            <label for="zipCode">ZIP Code:</label>
+            <input type="number" id="zipCode" name="zipCode" required>
+            <br>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+            <br>
+            <button class="button2" type="submit">Save Address</button>
+        </form>
+    </section>
+    <!--STOCK SECTION-->
+    <section id="stock" th:if="${role == 'EMPLOYEE'}">
+        <h2>Manage Stock</h2>
+        <form th:action="@{/profile/stock}" method="get">
+        <div class="nav_searchCont">
+            <input type="text" name="query" class="nav_searchInput" placeholder="Search...">
+            <button class="nav_searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Gender</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.productName}"></td>
+                    <td th:text="${product.productDescription}"></td>
+                    <td th:text="${product.productType}"></td>
+                    <td th:text="${product.productPrice}"></td>
+                    <td th:text="${product.productGender}"></td>
+                    <td><img th:src="${product.productImage}" alt="Product Image" style="width:100px;height:100px;"/></td>
+                </tr>
+            </tbody>
+        </table>
+        </form> 
+    </section>
+     <!-- Feedback Messages -->
+     <div th:if="${message}" style="color: green;">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
     </div>
     <!-- Log Out Button -->
     <form action="/logout" method="post">
         <button type="submit">Log Out</button>
     </form>
-</body>
+</main>
+    <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Softwear</h3>
+                <p>1 UTSA Circle,<br>San Antonio, TX 78249</p>
+                <p>210-458-4011</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Brick and Mortar Hours</h3>
+                <p>Monday: 10 am–5 pm<br>
+                Tuesday: Closed<br>
+                Wednesday: Closed<br>
+                Thursday: 10 am–5 pm<br>
+                Friday: 10 am–5 pm<br>
+                Saturday: 10 am–5 pm<br>
+                Sunday: 10 am–5 pm</p>
+                <p>Closed Thanksgiving, Christmas, and New Year's Day</p>
+            </div>
+            <div class="footer-section">
+                <h3>Company Info</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Jobs & Opportunities</a></li>
+                    <li><a href="#">Student Discount</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Responsible Disclosure</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <p>&copy; 2024 Softwear. All rights reserved.</p>
+        </div>
+    </footer>
 </html>

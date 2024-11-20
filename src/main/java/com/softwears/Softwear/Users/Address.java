@@ -46,23 +46,23 @@ public class Address {
         return id;
     }
 
-    public String getaddressStreet(){
+    public String getAddressStreet(){
         return this.addressStreet;
     }
 
-    public String getaddressCity(){
+    public String getAddressCity(){
         return this.addressCity;
     }
 
-    public String getaddressState(){
+    public String getAddressState(){
         return this.addressState;
     }
 
-    public int getaddressZip(){
+    public int getAddressZip(){
         return this.addressZip;
     }
 
-    public String getaddressCountry(){
+    public String getAddressCountry(){
         return this.addressCountry;
     }
 

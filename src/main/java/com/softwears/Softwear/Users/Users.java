@@ -52,6 +52,17 @@ public class Users {
     public void setId(int id){
         this.id = id;
     }
+    /*Setters */
+    public void setUserPassword(String password){
+        this.userPassword = password;
+    }
+    public void setUserEmail(String email){
+        this.userEmail = email;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
     /*Getters */
     public int getId(){
         return id;
