@@ -19,14 +19,22 @@ public class SecurityConfig {
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(request -> request.requestMatchers("/profile").authenticated() // Only the /profile page requires authentication
-            .requestMatchers("profile/stock").hasRole("EMPLOYEE")
+            .authorizeHttpRequests(request -> request.requestMatchers("/profile/**").authenticated() // Only the /profile page requires authentication
+            .requestMatchers("/employee/**").hasRole("EMPLOYEE")
             .anyRequest().permitAll())
             .formLogin(login -> login
                     .loginPage("/login")
                     .successHandler((request, response, authentication) -> {
                         // Redirect to the profile page after login
-                        response.sendRedirect("/profile");
+                      if (authentication.getAuthorities().stream()
+                        .anyMatch(authority -> authority.getAuthority().equals("ROLE_EMPLOYEE"))) {
+                      response.sendRedirect("/employee"); // Redirect employees
+                     } else if (authentication.getAuthorities().stream()
+                        .anyMatch(authority -> authority.getAuthority().equals("ROLE_CUSTOMER"))) {
+                      response.sendRedirect("/profile"); // Redirect customers
+                     } else {
+                      response.sendRedirect("/"); // Fallback redirect
+                    }
                     })
                     .permitAll());
 

@@ -115,9 +115,6 @@
         <button class="button" onclick="showSection('credentials')">Update Account</button>
         <button class="button" onclick="showSection('orders')">Orders</button>
         <button class="button" onclick="showSection('addresses')">Addresses</button>
-        <div th:if="${role == 'EMPLOYEE'}">
-            <button class="button" onclick="showSection('stock')">Manage Stock</button>
-        </div>
 
     <!-- CREDENTIALS -->
     <section id="credentials">
@@ -143,6 +140,25 @@
     <!--ORDERS SECTION-->
     <section id="orders">
         <h2>Previous Orders</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>Date Ordered</th>
+                    <th>Order Total</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.orderDate}"></td>
+                    <td th:text="${order.orderPrice}"></td>
+                    <td th:text="${order.orderStatus}"></td>
+                </tr>
+            </tbody>
+        </table>
+        </form> 
     </section>
     <!--ADDRESS SECTION-->
     <section id="addresses">
@@ -177,42 +193,6 @@
             <br>
             <button class="button2" type="submit">Save Address</button>
         </form>
-    </section>
-    <!--STOCK SECTION-->
-    <section id="stock" th:if="${role == 'EMPLOYEE'}">
-        <h2>Manage Stock</h2>
-        <form th:action="@{/profile/stock}" method="get">
-        <div class="nav_searchCont">
-            <input type="text" name="query" class="nav_searchInput" placeholder="Search...">
-            <button class="nav_searchButton">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Product Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Gender</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="product : ${products}">
-                    <td th:text="${product.id}"></td>
-                    <td th:text="${product.productName}"></td>
-                    <td th:text="${product.productDescription}"></td>
-                    <td th:text="${product.productType}"></td>
-                    <td th:text="${product.productPrice}"></td>
-                    <td th:text="${product.productGender}"></td>
-                    <td><img th:src="${product.productImage}" alt="Product Image" style="width:100px;height:100px;"/></td>
-                </tr>
-            </tbody>
-        </table>
-        </form> 
     </section>
      <!-- Feedback Messages -->
      <div th:if="${message}" style="color: green;">

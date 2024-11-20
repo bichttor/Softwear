@@ -21,18 +21,18 @@ public class MyUserDetails implements UserDetails{
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String role = "ROLE_" + user.getuserRole();
+        String role = "ROLE_" + user.getUserRole();
        return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
     @Override
     public String getPassword() {
-        return user.getuserPassword();
+        return user.getUserPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getuserEmail();
+        return user.getUserEmail();
     }
 
 }
