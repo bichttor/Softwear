@@ -7,6 +7,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
@@ -41,7 +43,10 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
    return http.build();
 }
 
-
+  @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();  
+    }
  @Bean
  public AuthenticationProvider authenticationProvider(){
    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

@@ -39,12 +39,14 @@ public class ProfileController {
     public String getProfilePage(Model model, HttpSession session, Principal principal) {
         Authentication authentication = (Authentication) principal;
         MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        /*Adds users credentials  */
         model.addAttribute("role", userDetails.getUser().getUserRole());
         model.addAttribute("fname", userDetails.getUser().getUserFname());
         model.addAttribute("lname", userDetails.getUser().getUserLname());
         model.addAttribute("email", userDetails.getUser().getUserEmail());
         model.addAttribute("phone", userDetails.getUser().getUserPhone());
         model.addAttribute("address", userDetails.getUser().getAddress());
+        /*Adds Users Orders */
         List<Orders> orders = ordersService.getOrderbyCustomer(userDetails.getUser());
         if(orders.isEmpty()){
             model.addAttribute("message", "No previous orders");
@@ -52,8 +54,9 @@ public class ProfileController {
         else{
             model.addAttribute("orders", orders);
         }
+        /*Adds products */
         if (!model.containsAttribute("products")) {
-            model.addAttribute("products", productsService.getProducts()); // Default to all products
+            model.addAttribute("products", productsService.getProducts()); 
         }
         
         return "profile";
