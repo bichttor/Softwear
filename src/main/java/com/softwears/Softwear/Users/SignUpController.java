@@ -15,6 +15,7 @@ public class SignUpController {
 i.e creating an account and storing it in the database */
     @Autowired
     UsersService usersService;
+   
     @GetMapping("/register")
     public String showSignUpPage() {
         return "register";
@@ -27,9 +28,12 @@ i.e creating an account and storing it in the database */
       @RequestParam(required = true) String phone,
       Model model) {
         /*Creates new user */
-        Users newUser = new Users(first, last, email, phone, password, phone, null);
+        Users newUser = new Users(first, last, email, phone, password, "CUSTOMER", null);
         usersService.addUser(newUser);
-        return "register";
+    
+
+        /*Once user creates account it sends them to login , add a pop up message later */
+        return "redirect:/login";
     }
     
 }

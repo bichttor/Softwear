@@ -47,10 +47,12 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();  
     }
+    
  @Bean
  public AuthenticationProvider authenticationProvider(){
    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
    provider.setUserDetailsService(myUserDetailsService);
+   provider.setPasswordEncoder(passwordEncoder());
    return provider;
  }
 }
