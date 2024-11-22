@@ -154,6 +154,23 @@
 
     <!--DISCOUNT SECTION-->
     <section id="discounts">
+        <h2>View Discounts</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Discount Code</th>
+                    <th>Discount Amount</th>
+                    <th>Discount Applicable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="discount : ${discounts}">
+                    <td th:text="${discount.discountCode}"></td>
+                    <td th:text="${discount.discountAmount}"></td>
+                    <td th:text="${discount.discountApplicable}"></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <!--USERS SECTION-->
     <section id="users">

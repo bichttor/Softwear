@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.softwears.Softwear.Orders.Orders;
 import com.softwears.Softwear.Orders.OrdersService;
+import com.softwears.Softwear.Payments.Discounts;
+import com.softwears.Softwear.Payments.DiscountsService;
 import com.softwears.Softwear.Products.Product;
 import com.softwears.Softwear.Products.ProductService;
 import com.softwears.Softwear.config.MyUserDetails;
@@ -34,6 +36,8 @@ public class EmployeeController {
     OrdersService ordersService;
     @Autowired
     UsersService usersService;
+    @Autowired
+    DiscountsService discountsService;
 
     @GetMapping
     public String getEmployeePage(Model model, HttpSession session, Principal principal) {
@@ -59,6 +63,14 @@ public class EmployeeController {
         }
         if (!model.containsAttribute("products")) {
             model.addAttribute("products", productsService.getProducts()); // Default to all products
+        }
+        /*Retrieves all Discounts */
+        List<Discounts> discounts = discountsService.getAllDiscounts();
+        if(discounts.isEmpty()){
+            model.addAttribute("message", "No Discounts");
+        }
+        else{
+            model.addAttribute("discounts", discounts);
         }
         return "employee";
     }
