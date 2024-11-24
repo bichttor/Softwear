@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -22,6 +24,7 @@ import com.softwears.Softwear.Products.ProductService;
 import com.softwears.Softwear.config.MyUserDetails;
 
 import jakarta.servlet.http.HttpSession;
+
 
 
 
@@ -61,6 +64,7 @@ public class EmployeeController {
         else{
             model.addAttribute("users", users);
         }
+        /*Retrieves all Products */
         if (!model.containsAttribute("products")) {
             model.addAttribute("products", productsService.getProducts()); // Default to all products
         }
@@ -87,5 +91,22 @@ public class EmployeeController {
         model.addAttribute("products", products);
         return "redirect:/employee#stock";
     }
+    /*map for updating stock */
+    @PostMapping("/stock/update")
+    public String updateProdcut(@RequestParam int id, @RequestParam(required=false) int quantity,
+    @RequestParam(required=false) double price,
+    Model model, RedirectAttributes redirectAttributes) {
 
+        try {
+            // Call service to update the product
+            productsService.updateProduct(id, price, quantity);
+            redirectAttributes.addFlashAttribute("message", "Product updated successfully.");
+            model.addAttribute("products", productsService.getProducts());
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error updating product: " + e.getMessage());
+        }
+        return "redirect:/employee#stock";
+    }
+    
+    /*map for updating discounts */
 }

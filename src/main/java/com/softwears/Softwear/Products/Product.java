@@ -52,10 +52,16 @@ public class Product {
         this.salesQuantity = sales;
         this.productImage = image;
     }
+    /*Setters */
     public void setId(int id){
         this.id = id;
     }
-    
+    public void setProductPrice(double price){
+        this.productPrice = price;
+    }
+    public void setSalesQuantity(int quantity){
+        this.salesQuantity = quantity;
+    }
     /*Getters */
     public int getId(){
         return id;

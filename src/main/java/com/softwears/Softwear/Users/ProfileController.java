@@ -97,17 +97,4 @@ public class ProfileController {
     
         return "redirect:/profile";
     }
-
-
-    @GetMapping("/stock")
-    public String getStock(@RequestParam(required=false) String query,Model model, RedirectAttributes redirectAttributes) {
-        List<Product> products;
-        if (query != null && !query.isEmpty()) {
-            products = productsService.searchProducts(query); // Call search method
-        } else {
-            products = productsService.getProducts(); // Default to all products
-        }
-        model.addAttribute("products", products);
-        return "redirect:/profile#stock";
-    }
 }
