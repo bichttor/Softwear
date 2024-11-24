@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -31,7 +30,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/employee")
-@SessionAttributes({ "fname","products"})
+@SessionAttributes({ "fname","products","orders","users","discounts"})
 public class EmployeeController {
     @Autowired
     ProductService productsService;
@@ -79,7 +78,7 @@ public class EmployeeController {
         return "employee";
     }
 
-
+    /*For searching */
     @GetMapping("/stock")
     public String getStock(@RequestParam(required=false) String query,Model model, RedirectAttributes redirectAttributes) {
         List<Product> products;
@@ -94,14 +93,14 @@ public class EmployeeController {
     /*map for updating stock */
     @PostMapping("/stock/update")
     public String updateProdcut(@RequestParam int id, @RequestParam(required=false) int quantity,
-    @RequestParam(required=false) double price,
-    Model model, RedirectAttributes redirectAttributes) {
+    @RequestParam(required=false) double price, Model model, 
+    RedirectAttributes redirectAttributes) {
 
         try {
             // Call service to update the product
             productsService.updateProduct(id, price, quantity);
             redirectAttributes.addFlashAttribute("message", "Product updated successfully.");
-            model.addAttribute("products", productsService.getProducts());
+            model.addAttribute("products", productsService.getProducts()); /*updates view */
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error updating product: " + e.getMessage());
         }
@@ -109,4 +108,20 @@ public class EmployeeController {
     }
     
     /*map for updating discounts */
+    @PostMapping("/discounts")
+    public String updateDiscounts(@RequestParam int id, @RequestParam(required=false) String code,
+    @RequestParam (required=false) String applicable,@RequestParam(required=false)  double amount,
+     Model model,  RedirectAttributes redirectAttributes) {
+        try{
+            discountsService.updateDiscounts(id,code,applicable,amount);
+            redirectAttributes.addFlashAttribute("message", "Discount updated successfully.");
+            model.addAttribute("discounts", discountsService.getAllDiscounts()); /*updates view */
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error updating discount: " + e.getMessage());
+        
+        }
+        
+        return "employee";
+    }
+    
 }

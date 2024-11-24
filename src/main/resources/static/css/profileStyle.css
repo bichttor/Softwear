@@ -231,6 +231,31 @@ section {
     transform: translateY(0); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
+.feedback-message {
+    animation: fadeOut 3s forwards; /* Triggers the fade-out animation */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.feedback-message.success {
+    color: green;
+}
+
+.feedback-message.error {
+    color: red;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Fully visible at the start */
+    }
+    80% {
+        opacity: 1; /* Remain visible for most of the duration */
+    }
+    100% {
+        opacity: 0; /* Fully transparent at the end */
+    }
+}
 /* Footer Styling */
 .footer {
     background-color: #222;

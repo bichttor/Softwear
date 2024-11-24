@@ -109,7 +109,13 @@
 <main>
     <!-- Welcome Message -->
     <h1>Welcome, <span th:text="${fname} ">User</span>!</h1>
-
+  <!-- Feedback Messages -->
+    <div th:if="${message}" class="feedback-message success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="feedback-message error">
+        <p th:text="${error}"></p>
+    </div>
     <!-- Navigation Buttons -->
     <button class="button" onclick="showSection('stock')">Manage Stock</button>
     <button class="button" onclick="showSection('discounts')">Manage Discounts</button>
@@ -186,17 +192,19 @@
                     <td th:text="${discount.discountCode}"></td>
                     <td th:text="${discount.discountAmount}"></td>
                     <td th:text="${discount.discountApplicable}"></td>
-                    <!--<td>
+                    <td>
                         <form th:action="@{/employee/discounts}" method="post">
-                            <input type="hidden" name="id" th:value="${product.id}" />
-                            <!-- Update Price 
-                            <input type="number" name="price" th:value="${product.productPrice}" step="0.01" placeholder="New Price" />
-                            <!-- Update Quantity -
-                            <input type="number" name="quantity" th:value="${product.salesQuantity}" placeholder="New Quantity" />    
-                            <!-- Submit Button to Update 
+                            <input type="hidden" name="id" th:value="${discount.discountId}" />
+                            <!-- Update Code-->
+                            <input type="text" name="code" th:value="${discount.discountCode}" step="0.01" placeholder="New Code" />
+                            <!-- Update Amount -->
+                            <input type="number" name="amount" th:value="${discount.discountAmount}" placeholder="New Amount" />    
+                            <!-- Update Applicable -->
+                            <input type="text" name="applicable" th:value="${discount.discountApplicable}" placeholder="New Applicable" />    
+                            <!-- Submit Button to Update--> 
                             <button type="submit">Update</button>
                         </form>
-                    </td>-->
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -245,13 +253,7 @@
             </tbody>
         </table>
     </section>
-     <!-- Feedback Messages -->
-     <div th:if="${message}" style="color: green;">
-        <p th:text="${message}"></p>
-    </div>
-    <div th:if="${error}" style="color: red;">
-        <p th:text="${error}"></p>
-    </div>
+   
     <!-- Log Out Button -->
     <form action="/logout" method="post">
         <button type="submit">Log Out</button>
