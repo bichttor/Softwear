@@ -109,7 +109,13 @@
 <main>
     <!-- Welcome Message -->
     <h1>Welcome, <span th:text="${fname} ">User</span>!</h1>
-
+  <!-- Feedback Messages -->
+    <div th:if="${message}" class="feedback-message success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="feedback-message error">
+        <p th:text="${error}"></p>
+    </div>
     <!-- Navigation Buttons -->
     <button class="button" onclick="showSection('stock')">Manage Stock</button>
     <button class="button" onclick="showSection('discounts')">Manage Discounts</button>
@@ -118,39 +124,56 @@
     <!--STOCK SECTION-->
     <section id="stock">
         <h2>Manage Stock</h2>
+        
+        <!-- Search Form -->
         <form th:action="@{/employee/stock}" method="get">
-        <div class="nav_searchCont">
-            <input type="text" name="query" class="nav_searchInput" placeholder="Search...">
-            <button class="nav_searchButton">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
+            <div class="nav_searchCont">
+                <input type="text" name="query" class="nav_searchInput" placeholder="Search...">
+                <button class="nav_searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+        
+        <!-- Product Table -->
         <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Product Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Gender</th>
                     <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Update Product</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="product : ${products}">
                     <td th:text="${product.id}"></td>
                     <td th:text="${product.productName}"></td>
-                    <td th:text="${product.productDescription}"></td>
-                    <td th:text="${product.productType}"></td>
-                    <td th:text="${product.productPrice}"></td>
-                    <td th:text="${product.productGender}"></td>
                     <td><img th:src="${product.productImage}" alt="Product Image" style="width:100px;height:100px;"/></td>
+                    <td th:text="${product.productPrice}"></td>
+                    <td th:text="${product.salesQuantity}"></td>
+                    <td>
+                        <!-- Update Product Form (POST request) -->
+                        <form th:action="@{/employee/stock/update}" method="post">
+                            <input type="hidden" name="id" th:value="${product.id}" />
+                            
+                            <!-- Update Price -->
+                            <input type="number" name="price" th:value="${product.productPrice}" step="0.01" placeholder="New Price" />
+                            
+                            <!-- Update Quantity -->
+                            <input type="number" name="quantity" th:value="${product.salesQuantity}" placeholder="New Quantity" />    
+                            
+                            <!-- Submit Button to Update -->
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        </form> 
     </section>
+    
 
     <!--DISCOUNT SECTION-->
     <section id="discounts">
@@ -161,6 +184,7 @@
                     <th>Discount Code</th>
                     <th>Discount Amount</th>
                     <th>Discount Applicable</th>
+                    <th>Update Discount</th>
                 </tr>
             </thead>
             <tbody>
@@ -168,6 +192,19 @@
                     <td th:text="${discount.discountCode}"></td>
                     <td th:text="${discount.discountAmount}"></td>
                     <td th:text="${discount.discountApplicable}"></td>
+                    <td>
+                        <form th:action="@{/employee/discounts}" method="post">
+                            <input type="hidden" name="id" th:value="${discount.discountId}" />
+                            <!-- Update Code-->
+                            <input type="text" name="code" th:value="${discount.discountCode}" step="0.01" placeholder="New Code" />
+                            <!-- Update Amount -->
+                            <input type="number" name="amount" th:value="${discount.discountAmount}" placeholder="New Amount" />    
+                            <!-- Update Applicable -->
+                            <input type="text" name="applicable" th:value="${discount.discountApplicable}" placeholder="New Applicable" />    
+                            <!-- Submit Button to Update--> 
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -216,13 +253,7 @@
             </tbody>
         </table>
     </section>
-     <!-- Feedback Messages -->
-     <div th:if="${message}" style="color: green;">
-        <p th:text="${message}"></p>
-    </div>
-    <div th:if="${error}" style="color: red;">
-        <p th:text="${error}"></p>
-    </div>
+   
     <!-- Log Out Button -->
     <form action="/logout" method="post">
         <button type="submit">Log Out</button>

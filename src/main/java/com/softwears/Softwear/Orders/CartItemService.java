@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartItemsService {
+public class CartItemService {
     
     @Autowired
-    private CartItemsRepository repo;
+    private CartItemRepository repo;
 
     
-    public List<CartItems> getCartItems(){
+    public List<CartItem> getCartItems(){
         return repo.findAll();
     }
-    public CartItems getCartItemsId(int id){        
-        return repo.findById(id).orElse(new CartItems());
+    public CartItem getCartItemsId(int id){        
+        return repo.findById(id).orElse(new CartItem());
     }
-     public void addCartItems(CartItems cartItems){
+     public void addCartItems(CartItem cartItems){
         repo.save(cartItems);
     }
-    public void updateCartItems(CartItems cartItems){
+    public void updateCartItems(CartItem cartItems){
         repo.save(cartItems);
     }
     public void deleteCartItems(int id){
