@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartItemsService {
+public class CartItemService {
     
     @Autowired
-    private CartItemsRepository repo;
+    private CartItemRepository repo;
 
     
     public List<CartItem> getCartItems(){
