@@ -17,8 +17,8 @@ import jakarta.persistence.Table;
 */
 
 @Entity
-@Table(name = "cart_items") /* set for data integrity */
-public class CartItems {
+@Table(name = "cart_item") /* set for data integrity */
+public class CartItem {
     /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,9 +38,9 @@ public class CartItems {
     @JoinColumn(name = "product_id")
     private Product productId;
 
-    public CartItems() {}
+    public CartItem() {}
 
-    public CartItems(int cartPrice, int cartCount, Cart cartId, Product productId){
+    public CartItem(int cartPrice, int cartCount, Cart cartId, Product productId){
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
         this.cartId = cartId;
