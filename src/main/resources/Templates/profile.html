@@ -33,10 +33,10 @@
                                     </svg>
                                 </div>
                                 <div class="nav_dropdown">
-                                    <button onclick="navigate('all','all')">All</button>
-                                    <button onclick="navigate('all','shirts')">Shirts</button>
-                                    <button onclick="navigate('all','pants')">Pants</button>
-                                    <button onclick="navigate('all','shoes')">Shoes</button>
+                                    <a href="javascript:navigate('mens','all')">All</a>
+                                    <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                    <a href="javascript:navigate('mens','pants')">Pants</a>
+                                    <a href="javascript:navigate('mens','shoes')">Shoes</a>
                                 </div>
                             </div>
                             <div tabindex="0" class="nav_lvl1">
@@ -47,10 +47,10 @@
                                     </svg>
                                 </div>
                                 <div class="nav_dropdown">
-                                    <button onclick="navigate('womens','all')">All</button>
-                                    <button onclick="navigate('womens','shirts')">Shirts</button>
-                                    <button onclick="navigate('womens','pants')">Pants</button>
-                                    <button onclick="navigate('womens','shoes')">Shoes</button>
+                                    <a href="javascript:navigate('mens','all')">All</a>
+                                    <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                    <a href="javascript:navigate('mens','pants')">Pants</a>
+                                    <a href="javascript:navigate('mens','shoes')">Shoes</a>
                                 </div>
                             </div>
                             <div tabindex="0" class="nav_lvl1">
@@ -61,10 +61,10 @@
                                     </svg>
                                 </div>
                                 <div class="nav_dropdown">
-                                    <button onclick="navigate('mens','all')">All</button>
-                                    <button onclick="navigate('mens','shirts')">Shirts</button>
-                                    <button onclick="navigate('mens','pants')">Pants</button>
-                                    <button onclick="navigate('mens','shoes')">Shoes</button>
+                                    <a href="javascript:navigate('mens','all')">All</a>
+                                    <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                    <a href="javascript:navigate('mens','pants')">Pants</a>
+                                    <a href="javascript:navigate('mens','shoes')">Shoes</a>
                                 </div>
                             </div>
     
@@ -95,7 +95,8 @@
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="nav_accountCont nav_accountCont">
-                                <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                                <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
+                                IF LOGGED IN OR LOGIN IF NOT-->
                             </div>
                             <div class="nav_cartCont nav_cartCont">
                                 <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
@@ -109,7 +110,13 @@
 <main>
     <!-- Welcome Message -->
     <h1>Welcome, <span th:text="${fname}">User</span>!</h1>
-
+     <!-- Feedback Messages -->
+     <div th:if="${message}" class="feedback-message success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="feedback-message error">
+        <p th:text="${error}"></p>
+    </div>
     <!-- Navigation Buttons -->
     
         <button class="button" onclick="showSection('credentials')">Update Account</button>
@@ -117,12 +124,20 @@
         <button class="button" onclick="showSection('addresses')">Addresses</button>
 
     <!-- CREDENTIALS -->
-    <section id="credentials">
+    <section id="credentials" class="section-container">
         <h2>Credentials</h2>
-            <span th:text="${fname}"></span>,
-            <span th:text="${lname}"></span>,
-            <span th:text="${phone}"></span>,
-            <span th:text="${email}"></span> 
+        <div>
+            <span>Full Name:</span> 
+            <span th:text="${fname}"></span> 
+            <span th:text="${lname}"></span>
+        </div>
+        <div>
+            <span>Phone:</span> <span th:text="${phone}"></span>
+        </div>
+        <div>
+            <span>Email:</span> <span th:text="${email}"></span>
+        </div>
+        
            
         <form th:action="@{/profile/credentials}" method="post">
             <label for="email">Email:</label>
@@ -138,7 +153,7 @@
         </form>
     </section>
     <!--ORDERS SECTION-->
-    <section id="orders">
+    <section id="orders"  class="section-container">
         <h2>Previous Orders</h2>
         <table border="1">
             <thead>
@@ -161,7 +176,7 @@
         </form> 
     </section>
     <!--ADDRESS SECTION-->
-    <section id="addresses">
+    <section id="addresses"  class="section-container">
         <h2>Saved Addresses</h2>
         <div th:each="address : ${address}">
             <p>
@@ -194,13 +209,6 @@
             <button class="button2" type="submit">Save Address</button>
         </form>
     </section>
-     <!-- Feedback Messages -->
-     <div th:if="${message}" style="color: green;">
-        <p th:text="${message}"></p>
-    </div>
-    <div th:if="${error}" style="color: red;">
-        <p th:text="${error}"></p>
-    </div>
     <!-- Log Out Button -->
     <form action="/logout" method="post">
         <button type="submit">Log Out</button>

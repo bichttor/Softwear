@@ -1,7 +1,6 @@
 package com.softwears.Softwear.Users;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.softwears.Softwear.Orders.Orders;
 import com.softwears.Softwear.Orders.OrdersService;
-import com.softwears.Softwear.Products.Product;
-import com.softwears.Softwear.Products.ProductService;
 import com.softwears.Softwear.config.MyUserDetails;
 
 import jakarta.servlet.http.HttpSession;
@@ -26,12 +22,10 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/profile")
-@SessionAttributes({"role", "fname", "lname", "email", "phone", "address","products"})
+@SessionAttributes({"role", "fname", "lname", "email", "phone", "address"})
 public class ProfileController {
     @Autowired
     UsersService usersService;
-    @Autowired
-    ProductService productsService;
     @Autowired
     OrdersService ordersService;
 
@@ -47,17 +41,7 @@ public class ProfileController {
         model.addAttribute("phone", userDetails.getUser().getUserPhone());
         model.addAttribute("address", userDetails.getUser().getAddress());
         /*Adds Users Orders */
-        List<Orders> orders = ordersService.getOrderbyCustomer(userDetails.getUser());
-        if(orders.isEmpty()){
-            model.addAttribute("message", "No previous orders");
-        }
-        else{
-            model.addAttribute("orders", orders);
-        }
-        /*Adds products */
-        if (!model.containsAttribute("products")) {
-            model.addAttribute("products", productsService.getProducts()); 
-        }
+        model.addAttribute("orders", ordersService.getOrderbyCustomer(userDetails.getUser()));
         
         return "profile";
     }
@@ -79,10 +63,8 @@ public class ProfileController {
 
     @PostMapping("/addresses")
     public String updateAddresses(Principal principal, RedirectAttributes redirectAttributes,@RequestParam String street,
-    @RequestParam String city,
-    @RequestParam String state,
-    @RequestParam int zipCode,
-    @RequestParam String country) {
+    @RequestParam String city, @RequestParam String state,@RequestParam int zipCode,
+    @RequestParam String country, Model model) {
         Authentication authentication = (Authentication) principal;
         MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
         int userId = userDetails.getUser().getId();
@@ -91,6 +73,7 @@ public class ProfileController {
         try { 
             usersService.updateAddress(userId, street, city, state, zipCode, country);
             redirectAttributes.addFlashAttribute("message", "Address updated successfully.");
+            model.addAttribute("address", userDetails.getUser().getAddress());
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error updating address: " + e.getMessage());
         }
