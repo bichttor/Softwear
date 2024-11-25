@@ -55,7 +55,12 @@ public class Product {
     public void setProductId(int productId){
         this.id = productId;
     }
-    
+    public void setProductPrice(double price){
+        this.productPrice = price;
+    }
+    public void setSalesQuantity(int quantity){
+        this.salesQuantity = quantity;
+    }
     /*Getters */
     public int getProductId(){
         return id;

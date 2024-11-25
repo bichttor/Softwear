@@ -36,10 +36,15 @@ public class ProductService {
     public List<Product> searchProducts(String Name){
         return repo.findByProductNameContainingIgnoreCase(Name);
     }
+ 
     public void addProduct(Product product){
         repo.save(product);
     }
-    public void updateProduct(Product product){
+    public void updateProduct(int id, double price, int quantity){
+        Product product = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Product not found"));
+            product.setProductPrice(price);
+            product.setSalesQuantity(quantity);
+        
         repo.save(product);
     }
     public void deleteProduct(int id){
