@@ -52,12 +52,12 @@ public class Product {
         this.salesQuantity = sales;
         this.productImage = image;
     }
-    public void setId(int id){
-        this.id = id;
+    public void setProductId(int productId){
+        this.id = productId;
     }
     
     /*Getters */
-    public int getId(){
+    public int getProductId(){
         return id;
     }
     public String getProductName(){
@@ -80,5 +80,8 @@ public class Product {
     }
     public String getProductImage(){
         return productImage;
+    }
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 }

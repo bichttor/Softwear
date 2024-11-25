@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UsersService {
+    
    @Autowired
     private UsersRepository repo;
      
@@ -51,4 +52,9 @@ public class UsersService {
             throw new IllegalArgumentException("User not found with ID: " + userId);
         }
     }
+    public Users findByuserEmail(String userEmail) {
+        return repo.findByuserEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("User not found with username: " + userEmail));
+    }
+    
 }
