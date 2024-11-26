@@ -15,7 +15,7 @@ public class ProductService {
     }
 
     public Product getProductId(int id){        
-        return repo.findById(id).orElse(new Product());
+        return repo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
     
     public List<Product> getGender(String Gender){
@@ -36,10 +36,15 @@ public class ProductService {
     public List<Product> searchProducts(String Name){
         return repo.findByProductNameContainingIgnoreCase(Name);
     }
+ 
     public void addProduct(Product product){
         repo.save(product);
     }
-    public void updateProduct(Product product){
+    public void updateProduct(int id, double price, int quantity){
+        Product product = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Product not found"));
+            product.setProductPrice(price);
+            product.setSalesQuantity(quantity);
+        
         repo.save(product);
     }
     public void deleteProduct(int id){

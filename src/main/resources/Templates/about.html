@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <title> Softwear - Home </title>
+        <title> Softwear - About </title>
         <link rel="stylesheet" href="/css/FrontPageStyle.css">
+        <link rel="stylesheet" href="/css/about.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
@@ -30,10 +31,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('all','all')">All</button>
-                                <button onclick="navigate('all','shirts')">Shirts</button>
-                                <button onclick="navigate('all','pants')">Pants</button>
-                                <button onclick="navigate('all','shoes')">Shoes</button>
+                                <a href="javascript:navigate('all','all')">All</a>
+                                <a href="javascript:navigate('all','shirts')">Shirts</a>
+                                <a href="javascript:navigate('all','pants')">Pants</a>
+                                <a href="javascript:navigate('all','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -45,10 +46,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('womens','all')">All</button>
-                                <button onclick="navigate('womens','shirts')">Shirts</button>
-                                <button onclick="navigate('womens','pants')">Pants</button>
-                                <button onclick="navigate('womens','shoes')">Shoes</button>
+                                <a href="javascript:navigate('womens','all')">All</a>
+                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('womens','pants')">Pants</a>
+                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -60,10 +61,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <button onclick="navigate('mens','all')">All</button>
-                                <button onclick="navigate('mens','shirts')">Shirts</button>
-                                <button onclick="navigate('mens','pants')">Pants</button>
-                                <button onclick="navigate('mens','shoes')">Shoes</button>
+                                <a href="javascript:navigate('mens','all')">All</a>
+                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('mens','pants')">Pants</a>
+                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
                             </div>
                         </div>
 
@@ -79,22 +80,14 @@
                                 <a th:href="@{/contact}">Contact Us</a>
                             </div>
                         </div>
-
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title" th:href="@{/about}>About Us</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                        </div>
                     </nav>
                     <div class-="header_right">
                         <div class="nav_searchCont nav_searchCont--close">
                             <i class="fas fa-search"></i>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
-                            <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                            <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
+                                                                                                                                                    IF LOGGED IN OR LOGIN IF NOT-->
                         </div>
                         <div class="nav_cartCont nav_cartCont">
                             <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
@@ -106,90 +99,96 @@
 
          <!-- Main Body Section-->
         <main id="app" class="main js-main">
-            <br>
-            <br>
-            <div class="fullSlider">
-                <div class="qSlider_fullHeight">
-                    <div class="qSlider">
-                        <div class="qSlider_slides">
-                            <div class="gutter qSlider_wrap qSlider_wrap--center whiteText">
-                                <div class="videoWrapper">
-                                    <video autoplay loop muted>
-                                        <source src="\miscVideos\1154850-hd_1920_1080_24fps.mp4" type="video/mp4">
-                                    </video>
-                                    <!-- Overlay Content -->
-                                    <div class="qSlider_overlay">
-                                        <p class="qSlider_topLine">ABOUT US</p>
-                                        <div class="qSlider_h2">
-                                            <h2>50% off</h2>
-                                        </div>
-                                        <div class="qSlider_desc">
-                                            <p><strong>Take advantage of sales throughout the month of October</strong></p>
-                                            <p>50% of Women's accessories with a $100 or more purchase</p>
-                                        </div>
-                                        <div class="buttons qSlider_cta">
-                                            <div class="saleBtn saleBtn--tall saleBtn--white">
-                                                <a tabindex="0" th:href="@{/women}">
-                                                    <p>Shop Now</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="heroGrid gutter darkText" style="background-color: #f1e8e3">
+                <div class="heroGrid-wrapper">
+                   <div class="hero_content">
+                      <span class="hero_topLine">About Softwear</span> 
+                      <div class="hero_copy">
+                         <div class="hero_header">
+                            <h1>The best finds are just a click away. Welcome!</h1>
+                         </div>
+                         <div class="hero_description">
+                            <p> 
+                                Welcome to Softwear, your ultimate destination for quality fashion. We are dedicated to offering a curated selection of products that combine style, quality, and affordability, all while delivering a seamless online shopping experience. At Softwear, we believe shopping should be convenient, enjoyable, and tailored to your needs, which is why we strive to bring you the latest trends and timeless essentials from trusted brands.
+                            </p>
+                            <br>
+                            <p>
+                                Our commitment goes beyond just selling products—we aim to build a community that values exceptional service and customer satisfaction. From fast, reliable shipping to a hassle-free return policy, every step of our process is designed with you in mind. Whether you’re here to refresh your wardrobe, upgrade your home, or find the perfect gift, Softwear is here to inspire and support you every step of the way. Thank you for choosing us as your trusted shopping partner!
+                            </p>
+                         </div>
+                      </div>
+                      <div class="hero_signature">
+                         <img src="/shopImages/logo2.png" alt="The Softwear Team"> 
+                         <div>
+                            <p><strong>The Softwear Team</strong><br>Brandon Koeck <br>Victor Olvera<br>Azaan Sundrani<br>Patrick Wyndham<br> Sebastian Martinez<br>Sofia Hernandez </p>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="hero_assets heroGrid_desktop">
+                      <ul class="image-gallery">
+                         <li class="image-position grid-img-0"><img src="/shopImages/about1.jpg" alt="About PEM Image of a woman on stilts dressed as a butterfly" class="img-cover"></li>
+                         <li class="image-position grid-img-1"><img src="/shopImages/about2.jpg" alt="About PEM grid2 1040 01" class="img-cover"></li>
+                         <li class="image-position grid-img-2"><img src="/shopImages/about3.jpg" alt="About PEM grid4 1040 01" class="img-cover"></li>
+                         <li class="image-position grid-img-3"><img src="/shopImages/about4.jpg" alt="About PEM grid3 1040 01" class="img-cover"></li>
+                      </ul>
+                   </div>
+                   <div class="heroGrid_mobile" style="background-image: url(&quot;https://s3.us-east-1.amazonaws.com/pem-org/general/AboutPEM_grid1_2000_01.jpg&quot;);"></div>
                 </div>
-            </div>
-            <section>
-                <br>
-                <h2 class="featured-items">Featured Items</h2>
-                <p>
-                    The carousel js logic still needs to be corrected but its still rough 
-                </p>
-                <div class="carousel-container">
-                    <button class="prev" onclick="prevSlide()">&#10094;</button> <!-- Left Arrow -->
-                    <div class="carousel-slides">
-                        <img class="slide" src="/shopImages/mens/AirMagBTTF.png" alt="Image 1">
-                        <img class="slide" src="/shopImages/unisex/Foam Runners-Onyx.png" alt="Image 2">
-                        <img class="slide" src="/shopImages/unisex/Jarritos x Nike Dunk SB.png" alt="Image 3">
-                        <img class="slide" src="/shopImages/mens/LEGENDSNEVERDIE.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/unisex/PleasuresShirt.png" alt="Image 4">
-                        <img class="slide" src="/shopImages/mens/RassvetCorduroyNAVY.png" alt="Image 4">
-                    </div> 
-                    <button class="next" onclick="nextSlide()">&#10095;</button> <!-- Right Arrow -->
-                </div>
-                <script src="/js/carousel.js"></script>
-                
-                <br><br>
-                <button class="shop-button" type ="button"><a  th:href="@{/catalog}">Shop All...</a></button>
-                <br><br>
-            </section>
+             </div>
         </main>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
-        <footer>
-        <section>
-            <hr>
-            <h1>Softwear</h1>
-            <p> 1 UTSA Circle San Antonio, TX 78249</p>
-            <h2>About Us</h2>
-            <p>
-                This is our totally real, totally not some nonsense text
-                of our totally real Reselling Website. I'm not quite sure if this will stay
-                but if it does we can put something here. Something better than this.
-                Seriously, what was the point?
-            </p>
-            <button role="button">Careers</button>
-            <button role="button">Our partners</button>
-            <br>
-            <h3>Help and Support</h3>
-            <button type ="button" onclick="window.location.href='mailto:example@example.com'">Contact Us!</button>
-            <button role="button">FAQ's</button>
-            <button role="button">Shipping and Delivery</button>
-            <p>&copy; 2024 Softwear. All rights reserved.</p>
-        </section>
-        </footer>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Softwear</h3>
+                    <p>1 UTSA Circle,<br>San Antonio, TX 78249</p>
+                    <p>210-458-4011</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Brick and Mortar Hours</h3>
+                    <p>Monday: 10 am–5 pm<br>
+                       Tuesday: Closed<br>
+                       Wednesday: Closed<br>
+                       Thursday: 10 am–5 pm<br>
+                       Friday: 10 am–5 pm<br>
+                       Saturday: 10 am–5 pm<br>
+                       Sunday: 10 am–5 pm</p>
+                    <p>Closed Thanksgiving, Christmas, and New Year's Day</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company Info</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Jobs & Opportunities</a></li>
+                        <li><a href="#">Student Discount</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Responsible Disclosure</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+                <p>&copy; 2024 Softwear. All rights reserved.</p>
+            </div>
+            </footer>
     </body>
-    <script src="/js/search.js"></script>
 </html>

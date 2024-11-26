@@ -1,5 +1,6 @@
 package com.softwears.Softwear.Users;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Users {
     @Column(name = "user_phone") 
     private String userPhone;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -39,11 +40,11 @@ public class Users {
     private String userRole;
 
     public Users(){}
-    public Users(String userFname, String userLname, String userEmail, String userPhone,String userPasssword, String userRole, Address address){
+    public Users(String userFname, String userLname, String userEmail, String userPhone,String userPassword, String userRole, Address address){
         this.userFname = userFname;
         this.userLname = userLname;
         this.userEmail = userEmail;
-        this.userPassword = userPasssword;
+        this.userPassword = userPassword;
         this.userPhone = userPhone;
         this.address = address;
         this.userRole = userRole;
@@ -67,25 +68,25 @@ public class Users {
     public int getId(){
         return id;
     }
-    public String getuserFname(){
-        return this.userFname;
+    public String getUserFname(){
+        return userFname;
     }
-    public String getuserLname(){
-        return this.userLname;
+    public String getUserLname(){
+        return userLname;
     }
-    public String getuserEmail(){
-        return this.userEmail;
+    public String getUserEmail(){
+        return userEmail;
     }
-    public String getuserPhone(){
-        return this.userPhone;
+    public String getUserPhone(){
+        return userPhone;
     }
-    public String getuserRole(){
-        return this.userRole;
+    public String getUserRole(){
+        return userRole;
     }
-    public String getuserPassword(){
-        return this.userPassword;
+    public String getUserPassword(){
+        return userPassword;
     }
     public Address getAddress(){
-        return this.address;
+        return address;
     }
 }

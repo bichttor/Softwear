@@ -18,7 +18,8 @@ public class Product {
     /*@Columns are set for data integrity */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int    id;
+    @Column(name = "id") // Map the field to the existing 'id' column
+    private int productId;
 
     @Column(name = "product_name") 
     private String productName;
@@ -52,13 +53,18 @@ public class Product {
         this.salesQuantity = sales;
         this.productImage = image;
     }
-    public void setId(int id){
-        this.id = id;
+    public void setProductId(int productId){
+        this.productId = productId;
     }
-    
+    public void setProductPrice(double price){
+        this.productPrice = price;
+    }
+    public void setSalesQuantity(int quantity){
+        this.salesQuantity = quantity;
+    }
     /*Getters */
-    public int getId(){
-        return id;
+    public int getProductId(){
+        return productId;
     }
     public String getProductName(){
         return productName;
@@ -80,5 +86,8 @@ public class Product {
     }
     public String getProductImage(){
         return productImage;
+    }
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 }

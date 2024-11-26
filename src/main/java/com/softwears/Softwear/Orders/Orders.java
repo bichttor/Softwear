@@ -2,7 +2,6 @@ package com.softwears.Softwear.Orders;
 
 import com.softwears.Softwear.Users.Users;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /*Using the Entity tag creates a table with the values given so no schema will have to be written 
@@ -36,7 +34,6 @@ public class Orders {
 
     @ManyToOne /*changed to ManytoOne, to allow users to have multiple orders */
     @JoinColumn(name = "fkey_customer_id")
-    //@Column(name = "customer_id")
     private Users customerId;
 
     public Orders() {}

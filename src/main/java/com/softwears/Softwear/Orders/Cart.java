@@ -1,5 +1,6 @@
 package com.softwears.Softwear.Orders;
 
+
 import com.softwears.Softwear.Users.Users;
 
 import jakarta.persistence.CascadeType;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -32,13 +34,14 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "customer_id", nullable = false)   
-    private final Users customerID;
+    private Users customerID;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Orders orderID;
 
     
+    public Cart() {}
 
     public Cart(Users customerID){
         this.customerID = customerID;
@@ -98,5 +101,5 @@ public class Cart {
     public void setOrderID(Orders orderID) {
         this.orderID = orderID;
     }
-
+    
 }
