@@ -19,7 +19,7 @@ i.e creating an account and storing it in the database */
    
     @GetMapping("/register")
     public String showSignUpPage() {
-        return "register";
+        return "Register";
     }
     @PostMapping("/register")
     public String postSignUp(@RequestParam(required = true) String first, 
@@ -30,7 +30,7 @@ i.e creating an account and storing it in the database */
       Model model) {
         Users newUser = new Users(first, last, email, phone, password, phone, null);
         usersService.addUser(newUser);
-        return "signup";
+        return "Register";
     }
     
 }
