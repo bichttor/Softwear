@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <title> Softwear - Home </title>
-        <link rel="stylesheet" href="/css/FrontPageStyle.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softwear - Contact Us</title>
+    <link rel="stylesheet" href="/css/FrontPageStyle.css">
+    <link rel="stylesheet" href="/css/contact.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
         <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
@@ -101,102 +104,153 @@
                         </div>
                     </div>
                 </div>
-        <header id="header-nav" class="header js-header">
-            <div class="header_wrap gutter">
-                <div class="nav-container">
-                    <a class="header_home" th:href="@{/}"><img src="/shopImages/logo2.png"></a>
-                    <nav class="nav_menu">
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">
-                                    <a th:href="@{/}">Home</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">Shop</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="nav_dropdown">
-                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('all','all')">All</a>
-                                <a href="javascript:navigate('all','shirts')">Shirts</a>
-                                <a href="javascript:navigate('all','pants')">Pants</a>
-                                <a href="javascript:navigate('all','shoes')">Shoes</a>
-                            </div>
-                        </div>
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">Women</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="nav_dropdown">
-                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('womens','all')">All</a>
-                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
-                                <a href="javascript:navigate('womens','pants')">Pants</a>
-                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
-                            </div>
-                        </div>
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">Men</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="nav_dropdown">
-                                <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('mens','all')">All</a>
-                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
-                                <a href="javascript:navigate('mens','pants')">Pants</a>
-                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
-                            </div>
-                        </div>
+        
+        </header>
 
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">Help</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </div>
-                            <div class="nav_dropdown">
-                                <a th:href="@{/faq}">FAQ</a>
-                                <a th:href="@{/contact}">Contact Us</a>
-                            </div>
+        <section>
+
+            <script>
+                // JavaScript for client-side validation
+                function validateForm(event) {
+                    event.preventDefault(); // Prevent form submission
+                    const errors = {};
+                    const form = event.target;
+        
+                    const firstName = form.firstName.value.trim();
+                    const lastName = form.lastName.value.trim();
+                    const email = form.email.value.trim();
+                    const phone = form.phone.value.trim();
+                    const username = form.username.value.trim();
+                    const password = form.password.value.trim();
+                    const comments = form.comments.value.trim();
+        
+                    // Validate First Name
+                    if (!firstName) {
+                        errors.firstName = "First name cannot be empty!";
+                    } else if (!/^[a-zA-Z'-]+$/.test(firstName)) {
+                        errors.firstName = "First name has invalid characters!";
+                    }
+        
+                    // Validate Last Name
+                    if (!lastName) {
+                        errors.lastName = "Last name cannot be empty!";
+                    } else if (!/^[a-zA-Z'-]+$/.test(lastName)) {
+                        errors.lastName = "Last name has invalid characters!";
+                    }
+        
+                    // Validate Email
+                    if (!email) {
+                        errors.email = "Email cannot be empty!";
+                    } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+                        errors.email = "Email format is invalid.";
+                    }
+        
+                    // Validate Phone
+                    if (!phone) {
+                        errors.phone = "Phone number can't be empty!";
+                    } else if (!/^\d+$/.test(phone)) {
+                        errors.phone = "Phone number must only contain digits!";
+                    } else if (phone.length < 10) {
+                        errors.phone = "Phone number must be at least 10 digits!";
+        }
+        
+                    // Validate Username
+                    if (!username) {
+                        errors.username = "Username cannot be empty!";
+                    }
+        
+                    // Validate Password
+                    if (!password) {
+                        errors.password = "Password cannot be empty!";
+                    }
+        
+                    // Validate Comments
+                    if (!comments) {
+                        errors.comments = "Comments cannot be empty!";
+                    }
+        
+                    // Show errors or submit the form
+                    const errorElements = document.querySelectorAll(".help-block");
+                    errorElements.forEach(el => (el.textContent = ""));
+        
+                    Object.keys(errors).forEach(field => {
+                        const errorElement = document.querySelector(`#${field}Error`);
+                        if (errorElement) {
+                            errorElement.textContent = errors[field];
+                        }
+                    });
+        
+                    if (Object.keys(errors).length === 0) {
+                        // Submit form data to the server (for real implementation)
+                        alert("Form submitted successfully!");
+                        form.reset();
+                    }
+                }
+            </script>
+        </head>
+        <body>
+        <div class="container">
+            <div class="panel panel-primary mt-5">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Contact Us</h3>
+                </div>
+                <div class="panel-body">
+                    <h2>Please fill out the contact form below</h2>
+                    <form id="contactForm" onsubmit="validateForm(event)">
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label for="firstName" class="control-label">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName">
+                            <span class="help-block text-danger" id="firstNameError"></span>
                         </div>
-                    </nav>
-                    <div class-="header_right">
-                        <div class="nav_searchCont nav_searchCont--close">
-                            <i class="fas fa-search"></i>
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label for="lastName" class="control-label">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName">
+                            <span class="help-block text-danger" id="lastNameError"></span>
                         </div>
-                        <div class="nav_accountCont nav_accountCont">
-                            <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
-                                                                                                                                                    IF LOGGED IN OR LOGIN IF NOT-->
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email" class="control-label">Email Address:</label>
+                            <input type="text" class="form-control" id="email" name="email">
+                            <span class="help-block text-danger" id="emailError"></span>
                         </div>
-                        <div class="nav_cartCont nav_cartCont">
-                            <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Phone Number:</label>
+                            <input type="text" class="form-control" id="phone" name="phone">
+                            <span class="help-block text-danger" id="phoneError"></span>
                         </div>
-                    </div>
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for="username" class="control-label">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                            <span class="help-block text-danger" id="usernameError"></span>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password" class="control-label">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            <span class="help-block text-danger" id="passwordError"></span>
+                        </div>
+                        <!-- Comments -->
+                        <div class="form-group">
+                            <label for="comments" class="control-label">Comments:</label>
+                            <textarea id="comments" class="form-control" name="comments"></textarea>
+                            <span class="help-block text-danger" id="commentsError"></span>
+                        </div>
+                        <!-- Submit Button -->
+                        <button class="submitBtn" type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
-        </header>
-        <section>
-            <h2>CONTACT</h2>
-			<p>Please contact us with any issue or concern. We will get to you as soon as possible.</p>
-			<p><b>Email</b></p>
-			<p>Send us an email: contact@softwear.com</p>
-
-			
-			
-            
-        </section>
+        </div>
+        </body>
+        </html>
+        
+                    
+                    
+                </section>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <footer class="footer">
