@@ -1,6 +1,5 @@
 package com.softwears.Softwear.Orders;
 
-
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +60,24 @@ public class CartController {
  
     return "redirect:/cart";
 }
+
+    @PostMapping("/cart/remove")
+    public String removeFromCart(@RequestParam(value = "cartId", required = false) Integer cartId, @RequestParam("productId") int productId, Principal principal) {
+        if (principal == null) {
+            throw new RuntimeException("User is not authenticated");
+        }
+        Authentication authentication = (Authentication) principal;
+        
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("Authentication is invalid");
+        }
+
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        Users user = usersService.findByuserEmail(username);
+
+        Cart cart = cartService.getCartId(user).orElseThrow(() -> new RuntimeException("Cart not found"));
+        cartService.removeProductFromCart(cart, productId);
+        return "redirect:/cart";
+    }
 }

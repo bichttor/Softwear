@@ -2,7 +2,6 @@ package com.softwears.Softwear.Orders;
 
 import com.softwears.Softwear.Products.Product;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,12 +29,12 @@ public class CartItem {
     @Column(name = "cart_item_count") 
     private int cartItemCount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     public CartItem() {}
