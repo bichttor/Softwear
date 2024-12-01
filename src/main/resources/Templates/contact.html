@@ -69,7 +69,7 @@
                                 <a href="javascript:navigate('mens','shoes')">Shoes</a>
                             </div>
                         </div>
-
+    
                         <div tabindex="0" class="nav_lvl1">
                             <div class="nav_titleCont">
                                 <p class="nav_title">Help</p>
@@ -80,15 +80,7 @@
                             <div class="nav_dropdown">
                                 <a th:href="@{/faq}">FAQ</a>
                                 <a th:href="@{/contact}">Contact Us</a>
-                            </div>
-                        </div>
-
-                        <div tabindex="0" class="nav_lvl1">
-                            <div class="nav_titleCont">
-                                <p class="nav_title">About Us</p>
-                                <svg class="nav_carrot" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                                </svg>
+                                <a th:href="@{/about}">About Us</a>
                             </div>
                         </div>
                     </nav>
@@ -97,14 +89,15 @@
                             <i class="fas fa-search"></i>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
-                            <a th:href="@{/login}"><i class="fas fa-user"></i></a>
+                            <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
+                                                                                                                                                    IF LOGGED IN OR LOGIN IF NOT-->
                         </div>
                         <div class="nav_cartCont nav_cartCont">
                             <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
-        
+            </div>
         </header>
 
         <section>
