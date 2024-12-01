@@ -1,6 +1,7 @@
 package com.softwears.Softwear.Orders;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,12 +20,23 @@ public class CartController {
 
 
     @Autowired
+    CartItemService cartItemService;
+    @Autowired
     CartService cartService;
     @Autowired
     UsersService usersService;
 
     @GetMapping("/cart")
-    public String getPage(Model model) {
+    public String getPage(Model model, Principal principal) {
+        Users user = usersService.findByuserEmail(principal.getName());
+        Cart cart = cartService.getOrCreateCartForUser(user);
+    
+        List<CartItem> cartItems = cartItemService.getCartItemsByCart(cart);
+        double totalPrice = cart.getCartPrice();
+        
+        model.addAttribute("cart", cart);
+        model.addAttribute("cartItems", cartItems);
+        model.addAttribute("totalPrice", totalPrice);
         return "ShoppingCart";
     }
 

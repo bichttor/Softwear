@@ -121,6 +121,41 @@
             </div>
         </section>
 
+                    <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Shopping Cart</title>
+            </head>
+            <body>
+                <h1>Your Shopping Cart</h1>
+                <div>
+                    <span>Total Cart Count: </span><span th:text="${cart.cartCount}"></span>
+                    <span>Total Cart Price: </span><span th:text="${cart.cartPrice}"></span>
+                </div>
+                <div>
+                    <h2>Items:</h2>
+                    <ul>
+                        <!-- Loop through cart items -->
+                        <li th:each="item : ${cartItems}">
+                            <img th:src="${item.productId.productImage}" alt="Product Image" style="width:100px; height:100px;"/>
+                            <span th:text="${item.productId.productName}"></span> - 
+                            <span>Price: </span><span th:text="${item.productId.productPrice}"></span>
+                            <span>Count: </span><span th:text="${item.cartItemCount}"></span>
+                            <span>Price: </span><span th:text="${item.cartItemPrice}"></span>
+                            <form th:action="@{/cart/remove}" method="post">
+                                <input type="hidden" th:name="productId" th:value="${item.productId.productId}" />
+                                <button type="submit" class="remove-from-cart-button">Remove Item From Cart</button>
+                            </form>
+                            <form th:action="@{/cart/add}" method="post">
+                                <input type="hidden" th:name="productId" th:value="${item.productId.productId}" />
+                                <button type="submit" class="add-to-cart-button">Add Item To Cart</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </body>
+            </html>
+
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <footer class="footer">
             <div class="footer-container">

@@ -70,15 +70,20 @@ public class CartService {
             cartItem.setCartItemCount(cartItem.getCartItemCount() - 1); // Increment count 
             cartItem.setCartItemPrice(cartItem.getCartItemCount() * product.getProductPrice()); // Update price
             cartItemRepository.save(cartItem);
+            
+
             if(cartItem.getCartItemCount() <= 0) {
                 cartItemRepository.delete(existingCartItem.get());
                 cart.setCartCount(cart.getCartCount() - 1);
                 cartRepository.save(cart);
+            } else {
+                cart.setCartCount(cart.getCartCount() - 1);
             }
         } else {
             throw new RuntimeException("CartItem not found");
         }
 
+        
         //all cart items sum
         List<CartItem> cartItems = cartItemRepository.findByCart(cart);
         double totalPrice = 0;
