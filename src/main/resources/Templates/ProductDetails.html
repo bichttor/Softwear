@@ -116,7 +116,9 @@
             </div>
             <div class="product-info">
                 <h1 th:text="${product.productName}"></h1>
-                <p th:text="${product.productDescription}"></p>
+                <p th:text="${details.productDescription}"></p>
+                <p th:text="${details.productSize}"></p>
+                <p th:text="${details.productColor}"></p>
                 <h3 th:text="'$' + ${product.productPrice}"></h3>
                 
                 <form th:action="@{/cart/add}" method="post">

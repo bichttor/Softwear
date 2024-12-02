@@ -11,11 +11,15 @@ public class ProductDetailsController {
 
     @Autowired
     private ProductService productService; // Service to fetch product data
+    @Autowired
+    private ProductDetailsService productDetailsService;
 
     @GetMapping("/product/{id}")
     public String getProductDetails(@PathVariable int id, Model model) {
         Product product = productService.getProductId(id);
+        ProductDetails details = productDetailsService.getByProductId(product);
         model.addAttribute("product", product);
+        model.addAttribute("details", details);
         return "ProductDetails";
     }
 }
