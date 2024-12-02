@@ -42,19 +42,32 @@ public class EmployeeController {
     DiscountsService discountsService;
 
     @GetMapping
-    public String getEmployeePage(Model model, HttpSession session, Principal principal) {
+    public String getEmployeePage(@RequestParam(required = false) String sortBy,
+    Model model, HttpSession session, Principal principal) {
         Authentication authentication = (Authentication) principal;
         MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
     
         model.addAttribute("fname", userDetails.getUser().getUserFname());
-        /*Retrieves all orders */
-        List<Orders> orders = ordersService.getOrders();
-        if(orders.isEmpty()){
-            model.addAttribute("message", "No previous orders");
+        /* Retrieves all orders, with sorting if a parameter is provided */
+        List<Orders> orders;
+        if (sortBy != null) {
+        orders = switch (sortBy) {
+                case "date" -> ordersService.getOrdersSortedByDate();
+                case "customer" -> ordersService.getOrdersSortedByCustomer();
+                case "dollars" -> ordersService.getOrdersSortedByAmount();
+                default -> ordersService.getOrders();
+            }; 
+        } 
+        else {
+            orders = ordersService.getOrders(); // Default to unsorted orders
         }
-        else{
+
+        if (orders.isEmpty()) {
+            model.addAttribute("message", "No previous orders");
+        } else {
             model.addAttribute("orders", orders);
         }
+
         /*Retrieves all Users */
         List<Users> users = usersService.getAllusers();
         if(users.isEmpty()){
