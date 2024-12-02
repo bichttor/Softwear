@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.softwears.Softwear.Payments.Invoice;
+import com.softwears.Softwear.Payments.InvoiceRepository;
+import com.softwears.Softwear.Payments.InvoiceService;
 import com.softwears.Softwear.Products.Product;
 import com.softwears.Softwear.Products.ProductRepository;
 import com.softwears.Softwear.Users.Users;
@@ -22,7 +25,11 @@ public class CartService {
     public CartItemRepository cartItemRepository;
     @Autowired
     public OrdersRepository ordersRepository;
+    @Autowired
+    public InvoiceRepository invoiceRepository;
 
+    @Autowired
+    private InvoiceService invoiceService;
     @Autowired
     private OrdersService ordersService;
 
@@ -142,6 +149,7 @@ public class CartService {
             
             if (order != null) {
                 order.setOrderStatus("Pending");
+                
             }
 
             cartRepository.save(order);

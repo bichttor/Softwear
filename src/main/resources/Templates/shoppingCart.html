@@ -135,6 +135,44 @@
                     </ul>
                 </div>
             </body>
+            <body>
+                <h2>Payment Details</h2>
+                <form th:action="@{/cart/paymentDetails}" method="POST">
+                    <label for="cardNumber">Card Number:</label><br>
+                    <input type="text" id="cardNumber" name="cardNumber" required><br><br>
+            
+                    <label for="cardName">Name on Card:</label><br>
+                    <input type="text" id="cardName" name="cardName" required><br><br>
+            
+                    <label for="expirationDate">Expiration Date:</label><br>
+                    <input type="month" id="expirationDate" name="expirationDate" required><br><br>
+            
+                    <label for="cvv">CVV:</label><br>
+                    <input type="text" id="cvv" name="cvv" required><br><br>
+            
+                    <label for="cardFunction">Card Function:</label><br>
+                    <select id="cardFunction" name="cardFunction" required>
+                        <option value="credit">Credit</option>
+                        <option value="debit">Debit</option>
+                    </select><br><br>
+            
+                    <label for="cardType">Card Type:</label><br>
+                    <input type="text" id="cardType" name="cardType" required><br><br>
+
+                    <label for="bank">Bank:</label><br>
+                    <input type="text" id="bank" name="bank" required><br><br>
+            
+                    
+                    <input type="submit" value="Submit Payment Details">
+                    
+                </form>
+                <form th:action="@{/cart/paymentSubmission}" method="POST">
+                    <span>Total Cart Count: </span><span th:text="${cart.cartCount}"></span>
+                    <span>Total Cart Price: </span><span th:text="${cart.cartPrice}"></span>
+
+                    <input type="submit" value="Submit Order">
+                </form>
+            </body>
         </main>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->

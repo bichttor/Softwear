@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.softwears.Softwear.Payments.Invoice;
+import com.softwears.Softwear.Payments.InvoiceService;
+import com.softwears.Softwear.Payments.PaymentDetails;
+import com.softwears.Softwear.Payments.PaymentDetailsService;
 import com.softwears.Softwear.Users.Users;
 import com.softwears.Softwear.Users.UsersService;
 import com.softwears.Softwear.config.MyUserDetails;
@@ -29,6 +33,14 @@ public class CartController {
     CartService cartService;
     @Autowired
     UsersService usersService;
+    @Autowired
+    PaymentDetailsService paymentDetailsService;
+    @Autowired
+    InvoiceService invoiceService;
+    @Autowired
+    CartRepository cartRepository;
+    @Autowired
+    OrdersRepository ordersRepository;
 
     @GetMapping("/cart")
     public String getPage(Model model, Principal principal) {
@@ -98,11 +110,59 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @PostMapping("/cart/payment")
-    public String makePayment(@RequestBody String entity) {
-        //TODO: process POST request
+    @PostMapping("/cart/paymentDetails")
+    public String fillPaymentDetails(@RequestParam(required = true) String cardNumber,
+                                    @RequestParam(required = true) String cardName,
+                                    @RequestParam(required = true) String expirationDate,
+                                    @RequestParam(required = true) double cvv,
+                                    @RequestParam(required = true) String cardType,
+                                    @RequestParam(required = true) String cardFunction,
+                                    @RequestParam(required = true) String bank, Model model, Principal principal) {
+    
+        Users customerId = getUserFromPrincipal(principal);
+        PaymentDetails paymentDetails = new PaymentDetails(cardNumber, cardName, expirationDate, cvv, cardType, cardFunction,bank,customerId);
+        paymentDetailsService.addPaymentDetails(paymentDetails);
+
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/cart/paymentSubmission")
+    public String submitPayment(@RequestParam(value = "cartId", required = false) Integer cartId, Model model, Principal principal) {
+        Users user = getUserFromPrincipal(principal);
+        Cart cart = cartService.getCartId(user).orElseThrow(() -> new RuntimeException("Cart not found"));
+    
+        Orders order = cart.getOrderId(); // Get the associated order
+    
+        try {
+            Invoice invoice = invoiceService.createInvoice(order.getOrderId()); // Pass the orderId
+            model.addAttribute("message", "Payment successful. Invoice ID: " + invoice.getInvoiceId());
+            order.setOrderStatus("Complete");
+            ordersRepository.save(order);
+
+
+            return "redirect:/cart"; // Redirect to a success page or display a confirmation
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Error processing payment: " + e.getMessage());
+            return "error"; // Redirect to an error page
+        }
+    }
+    
+    public Users getUserFromPrincipal(Principal principal) {
+
+        if (principal == null) {
+            throw new RuntimeException("User is not authenticated");
+        }
+        Authentication authentication = (Authentication) principal;
         
-        return entity;
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("Authentication is invalid");
+        }
+
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        Users user = usersService.findByuserEmail(username);
+
+        return user;
     }
     
 }

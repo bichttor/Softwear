@@ -6,11 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PaymentService {
+public class PaymentDetailsService {
     @Autowired
-    private PaymentRepository repo;
+    private PaymentDetailsRepository repo;
 
-     public List<Payment> getPayment() {
+     public List<PaymentDetails> getPayment() {
         return repo.findAll();
+    }
+
+    public void addPaymentDetails(PaymentDetails paymentDetails) {
+
+         repo.save(paymentDetails);
     }
 }

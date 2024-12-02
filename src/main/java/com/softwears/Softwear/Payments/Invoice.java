@@ -1,13 +1,17 @@
 package com.softwears.Softwear.Payments;
 
+import java.time.LocalDateTime;
+
 import com.softwears.Softwear.Orders.Orders;
-import jakarta.persistence.CascadeType;
+import com.softwears.Softwear.Users.Users;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,25 +24,26 @@ public class Invoice {
     private int invoiceId;
 
     @Column(name = "invoice_cost")
-    private String invoiceCost;
+    private double invoiceCost;
 
     @Column(name = "invoice_date")
-    private String invoiceDate;
+    private LocalDateTime invoiceDate;
 
-    @Column(name = "invoice_status")
-    private String invoiceStatus;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Users customerId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "order_id")
     private Orders orderId;
 
     public Invoice() {
     }
 
-    public Invoice(String cost, String date, String status) {
-        this.invoiceCost = cost;
+    public Invoice(double invoiceCost, LocalDateTime date, Users customerId) {
+        this.invoiceCost = invoiceCost;
         this.invoiceDate = date;
-        this.invoiceStatus = status;
+        this.customerId = customerId;
 
     }
 
@@ -50,16 +55,28 @@ public class Invoice {
         return invoiceId;
     }
 
-    public String getCost() {
+    public double getCost() {
         return invoiceCost;
     }
 
-    public String getDate() {
+    public void setCost(double invoiceCost) {
+        this.invoiceCost = invoiceCost;
+    }
+
+    public LocalDateTime getDate() {
         return invoiceDate;
     }
 
-    public String getStatus() {
-        return invoiceStatus;
+    public void setDate(LocalDateTime invoiceDate) {
+        this.invoiceDate = invoiceDate;
+    }
+
+    public Users getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Users customerId) {
+        this.customerId = customerId;
     }
 
     public Orders getOrderId() {
