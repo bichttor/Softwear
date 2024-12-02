@@ -27,4 +27,7 @@ public class CartItemService {
     public void deleteCartItems(int id){
         repo.deleteById(id);
     }
+    public List<CartItem> getCartItemsByCart(Cart cart) {
+        return repo.findByCart(cart);
+    }
 }
