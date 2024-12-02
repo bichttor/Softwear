@@ -1,5 +1,8 @@
 package com.softwears.Softwear.Orders;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import com.softwears.Softwear.Users.Users;
 
 import jakarta.persistence.Column;
@@ -24,7 +27,7 @@ public class Orders {
     private int orderId;
 
     @Column(name = "order_date") 
-    private String orderDate;
+    private LocalDateTime orderDate;
 
     @Column(name = "order_status") 
     private String orderStatus;
@@ -38,7 +41,12 @@ public class Orders {
 
     public Orders() {}
 
-    public Orders(String orderDate, String orderStatus, double orderPrice, Users customerId){
+    public Orders(Users customerId){
+        this.customerId = customerId;
+        this.orderDate = LocalDateTime.now();
+    }
+
+    public Orders(LocalDateTime orderDate, String orderStatus, double orderPrice, Users customerId){
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.orderPrice = orderPrice;
@@ -55,11 +63,11 @@ public class Orders {
         this.orderId = orderId;
     }
 
-    public String getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -75,7 +83,7 @@ public class Orders {
         return orderPrice;
     }
 
-    public void setOrderPrice(int orderPrice) {
+    public void setOrderPrice(double orderPrice) {
         this.orderPrice = orderPrice;
     }
 

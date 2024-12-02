@@ -115,7 +115,7 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                     <div class="product-description" th:text="${product.productDescription}"></div>
                     <div class="product-price" th:text="${product.productPrice}"></div>
                     
-                    <form th:action="@{/cart/add}" method="post">
+                    <form th:action="@{/catalog/add}" method="post">
                         <input type="hidden" th:name="productId" th:value="${product.productId}" />
                         <button type="submit" class="add-to-cart-button">Add to Cart</button>
                     </form>

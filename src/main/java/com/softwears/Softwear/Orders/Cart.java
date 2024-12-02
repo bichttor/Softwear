@@ -38,13 +38,14 @@ public class Cart {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
-    private Orders orderID;
+    private Orders orderId;
 
     
     public Cart() {}
 
-    public Cart(Users customerID){
+    public Cart(Users customerID, Orders orderId){
         this.customerID = customerID;
+        this.orderId = orderId;
         this.cartPrice = 0.00;
         this.cartCount = 0;
     }
@@ -55,11 +56,11 @@ public class Cart {
         this.cartCount = cartCount;
     } 
 
-    public Cart(Users customerID, double cartPrice, int cartCount, Orders orderID){
+    public Cart(Users customerID, double cartPrice, int cartCount, Orders orderId){
         this.customerID = customerID;
         this.cartPrice = cartPrice;
         this.cartCount = cartCount;
-        this.orderID = orderID;
+        this.orderId = orderId;
     }
 
 
@@ -94,12 +95,12 @@ public class Cart {
         return customerID;
     }
 
-    public Orders getOrderID() {
-        return orderID;
+    public Orders getOrderId() {
+        return orderId;
     }
 
-    public void setOrderID(Orders orderID) {
-        this.orderID = orderID;
+    public void setOrderId(Orders orderId) {
+        this.orderId = orderId;
     }
     
 }

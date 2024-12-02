@@ -1,6 +1,7 @@
 package com.softwears.Softwear.Orders;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.softwears.Softwear.Users.Users;
 import com.softwears.Softwear.Users.UsersService;
 import com.softwears.Softwear.config.MyUserDetails;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class CartController {
@@ -30,7 +34,8 @@ public class CartController {
     public String getPage(Model model, Principal principal) {
         Users user = usersService.findByuserEmail(principal.getName());
         Cart cart = cartService.getOrCreateCartForUser(user);
-    
+        
+
         List<CartItem> cartItems = cartItemService.getCartItemsByCart(cart);
         double totalPrice = cart.getCartPrice();
         
@@ -70,7 +75,7 @@ public class CartController {
             //add count as add product to count is implemented
     cartService.addProductToCart(cart.getId(), productId);
  
-    return "redirect:/cart";
+            return "redirect:/cart";
 }
 
     @PostMapping("/cart/remove")
@@ -92,4 +97,12 @@ public class CartController {
         cartService.removeProductFromCart(cart, productId);
         return "redirect:/cart";
     }
+
+    @PostMapping("/cart/payment")
+    public String makePayment(@RequestBody String entity) {
+        //TODO: process POST request
+        
+        return entity;
+    }
+    
 }
