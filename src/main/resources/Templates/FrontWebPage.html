@@ -89,7 +89,9 @@
                     </nav>
                     <div class-="header_right">
                         <div class="nav_searchCont nav_searchCont--close">
-                            <i class="fas fa-search"></i>
+                            <button class="search-toggle" id="searchToggle">
+                              <i class="fas fa-search"></i>
+                            </button>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
                             <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
@@ -99,6 +101,16 @@
                             <a th:href="@{/cart}"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="search-modal" id="searchModal">
+                <div class="search-modal_top darkText">
+                      <h1>Search</h1>
+                  <div class="search-modal-content">
+                      <button class="close-search" id="closeSearch">&times;</button>
+                      <input type="text" placeholder="Type to search" class="search-input">
+                      
+                  </div>
                 </div>
             </div>
         </header>
