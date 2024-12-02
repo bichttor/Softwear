@@ -11,5 +11,7 @@ import com.softwears.Softwear.Users.Users;
 public interface CartRepository extends JpaRepository<Cart, Integer>{
     Optional<Cart> findByCartId(Integer cartId);
     Optional<Cart> findByCustomerID(Users customerID);
+    Cart findByOrderId(Orders orderId);
+    void save(Orders order);
    
 }
