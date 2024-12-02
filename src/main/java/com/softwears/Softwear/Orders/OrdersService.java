@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.softwears.Softwear.Users.Users;
@@ -53,5 +54,20 @@ public class OrdersService {
                 ordersRepository.save(order);  // Save the updated order
             }
         }
+    }
+  
+    // Method to get orders sorted by date
+    public List<Orders> getOrdersSortedByDate() {
+        return ordersRepository.findAll(Sort.by(Sort.Order.desc("orderDate")));
+    }
+
+    // Method to get orders sorted by customer
+    public List<Orders> getOrdersSortedByCustomer() {
+        return ordersRepository.findAll(Sort.by(Sort.Order.asc("customerId")));
+    }
+
+    // Method to get orders sorted by dollar amount (order total)
+    public List<Orders> getOrdersSortedByAmount() {
+        return ordersRepository.findAll(Sort.by(Sort.Order.desc("orderPrice")));
     }
 }
