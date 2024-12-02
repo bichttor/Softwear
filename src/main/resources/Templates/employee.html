@@ -243,6 +243,11 @@
     <!--ORDERS SECTION-->
     <section id="orders">
         <h2>View Orders</h2>
+        <div class="sorting-options">
+            <a th:href="@{/employee?sortBy=date}">Sort by Date</a>
+            <a th:href="@{/employee?sortBy=customer}">Sort by Customer</a>
+            <a th:href="@{/employee?sortBy=dollars}">Sort by Dollars</a>
+        </div>
         <table border="1">
             <thead>
                 <tr>
