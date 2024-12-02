@@ -17,9 +17,15 @@ public class CatalogController {
     private ProductService productservice;
     
     @GetMapping("/catalog")
-    public String getProducts(@RequestParam(required = false) String type ,@RequestParam(required = false) String gender, Model model){
+    public String getProducts(@RequestParam(required = false) String type ,@RequestParam(required = false) String gender
+    ,@RequestParam(required = false) String query, Model model){
         List<Product> products;
-        if(!gender.equals("all") && !type.equals("all")){
+        if (query != null && !query.isEmpty()) {
+            products = productservice.searchProducts(query); // Call search method
+            model.addAttribute("products", products);
+            return "catalog";
+        }
+        else if(!gender.equals("all") && !type.equals("all")){
             products = productservice.getTypeGender(type, gender);
         }
         else if(!gender.equals("all")){
@@ -35,4 +41,5 @@ public class CatalogController {
         return "catalog";
     }
    
+
 }
