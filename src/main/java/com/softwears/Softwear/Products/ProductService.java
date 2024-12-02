@@ -17,6 +17,8 @@ public class ProductService {
     public Product getProductId(int id){        
         return repo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
+
+    
     
     public List<Product> getGender(String Gender){
         List<Product> products;

@@ -51,16 +51,16 @@ public class ProductDetails {
     public int getProductDetailsId() {
         return productDetailsId;
     }
-    public String getColor() {
+    public String getProductColor() {
         return productColor;
     }
-    public String getDescription() {
+    public String getProductDescription() {
         return productDescription;
     }
-    public double getWeight() {
+    public double getProductWeight() {
         return productWeight;
     }
-    public String getSize() {
+    public String getProductSize() {
         return productSize;
     }
     public Product getProductId() {

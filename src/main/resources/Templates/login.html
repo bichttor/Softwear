@@ -29,10 +29,10 @@
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('all','all')">All</a>
-                            <a href="javascript:navigate('all','shirts')">Shirts</a>
-                            <a href="javascript:navigate('all','pants')">Pants</a>
-                            <a href="javascript:navigate('all','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
                     <div tabindex="0" class="nav_lvl1">
@@ -44,10 +44,10 @@
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('womens','all')">All</a>
-                            <a href="javascript:navigate('womens','shirts')">Shirts</a>
-                            <a href="javascript:navigate('womens','pants')">Pants</a>
-                            <a href="javascript:navigate('womens','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
                     <div tabindex="0" class="nav_lvl1">
@@ -59,10 +59,10 @@
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('mens','all')">All</a>
-                            <a href="javascript:navigate('mens','shirts')">Shirts</a>
-                            <a href="javascript:navigate('mens','pants')">Pants</a>
-                            <a href="javascript:navigate('mens','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
 

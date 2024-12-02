@@ -2,6 +2,7 @@ package com.softwears.Softwear.Products;
 
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,9 @@ public class ProductDetailsService {
     public List<ProductDetails> getProductDetails() {
         return repo.findAll();
     }
-
+    public ProductDetails getByProductId(Product product){
+        return repo.findByProductId(product);
+    }
     public ProductDetails getProductDetailsId(int productDetailsId) {
         return repo.findById(productDetailsId).orElse(new ProductDetails());
     }

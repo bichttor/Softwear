@@ -33,10 +33,10 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('all','all')">All</a>
-                            <a href="javascript:navigate('all','shirts')">Shirts</a>
-                            <a href="javascript:navigate('all','pants')">Pants</a>
-                            <a href="javascript:navigate('all','shoes')">Shoes</a>
+                        <a th:href="@{/catalog(gender=${'all'}, type=${'all'})}">All</a>
+                        <a th:href="@{/catalog(gender=${'all'}, type=${'shirts'})}">Shirts</a>
+                        <a th:href="@{/catalog(gender=${'all'}, type=${'pants'})}">Pants</a>
+                        <a th:href="@{/catalog(gender=${'all'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
                     <div tabindex="0" class="nav_lvl1">
@@ -48,10 +48,10 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('womens','all')">All</a>
-                            <a href="javascript:navigate('womens','shirts')">Shirts</a>
-                            <a href="javascript:navigate('womens','pants')">Pants</a>
-                            <a href="javascript:navigate('womens','shoes')">Shoes</a>
+                        <a th:href="@{/catalog(gender=${'womens'}, type=${'all'})}">All</a>
+                        <a th:href="@{/catalog(gender=${'womens'}, type=${'shirts'})}">Shirts</a>
+                        <a th:href="@{/catalog(gender=${'womens'}, type=${'pants'})}">Pants</a>
+                        <a th:href="@{/catalog(gender=${'womens'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
                     <div tabindex="0" class="nav_lvl1">
@@ -63,10 +63,10 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                         </div>
                         <div class="nav_dropdown">
                             <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a href="javascript:navigate('mens','all')">All</a>
-                            <a href="javascript:navigate('mens','shirts')">Shirts</a>
-                            <a href="javascript:navigate('mens','pants')">Pants</a>
-                            <a href="javascript:navigate('mens','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'mens'}, type=${'shoes'})}">Shoes</a>
                         </div>
                     </div>
 
@@ -86,7 +86,9 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                 </nav>
                 <div class-="header_right">
                     <div class="nav_searchCont nav_searchCont--close">
-                        <i class="fas fa-search"></i>
+                        <button class="search-toggle" id="searchToggle">
+                          <i class="fas fa-search"></i>
+                        </button>
                     </div>
                     <div class="nav_accountCont nav_accountCont">
                         <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
@@ -98,6 +100,17 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                 </div>
             </div>
         </div>
+        <form th:action="@{/catalog}" method="get">
+            <div class="search-modal" id="searchModal">
+                <div class="search-modal_top darkText">
+                    <h1>Search</h1>
+                    <div class="search-modal-content">
+                        <button class="close-search" id="closeSearch">&times;</button>
+                        <input type="text" name="query" placeholder="Type to search" class="search-input">   
+                    </div>
+                </div>
+            </div>
+        </form>
     </header>
 
     <!-- Main Content -->
@@ -106,13 +119,13 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
 			
             <div class="grid-container">
                 <div th:each="product : ${products}" class="grid-item">
-
-                    <div class="product-image">
-                        <img th:src="${product.productImage}" alt="Product Image" />
-                    </div>
-
-                    <div class="product-name" th:text="${product.productName}"></div>
-                    <div class="product-description" th:text="${product.productDescription}"></div>
+                    <a th:href="@{/product/{id}(id=${product.productId})}">
+                        <div class="product-image">
+                            <img th:src="${product.productImage}" alt="Product Image" />
+                        </div>
+                        <div class="product-name" th:text="${product.productName}"></div>
+                    </a>
+                    
                     <div class="product-price" th:text="${product.productPrice}"></div>
                     
                     <form th:action="@{/catalog/add}" method="post">
@@ -120,13 +133,6 @@ SO THIS MEANS WE DONT HAVE TO HAVE A SEPARATE MENS,WOMENS< AND SO ON HTML FILES 
                         <button type="submit" class="add-to-cart-button">Add to Cart</button>
                     </form>
 
-                    <!--
-                    <div class="product-id" th:text="${product.id}"></div>
-                    <div class="product-type" th:text="${product.productType}"></div>
-                    <div class="product-gender" th:text="${product.productGender}"></div>
-                    
-                    -->
-                </div>
             </div>
             
  <!-- 

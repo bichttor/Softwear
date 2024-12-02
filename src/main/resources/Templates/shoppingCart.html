@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <link rel="stylesheet" href="/css/FrontPageStyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <head>
         <title> Softwear Shopping Cart Page</title>
-        <link rel="stylesheet" href="/css/FrontPageStyle.css">
+        <link rel="stylesheet" href="/css/cartStyle.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
@@ -30,10 +27,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('all','all')">All</a>
-                                <a href="javascript:navigate('all','shirts')">Shirts</a>
-                                <a href="javascript:navigate('all','pants')">Pants</a>
-                                <a href="javascript:navigate('all','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'all'}, type=${'shoes'})}">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -45,10 +42,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('womens','all')">All</a>
-                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
-                                <a href="javascript:navigate('womens','pants')">Pants</a>
-                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'all'})}">All</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shirts'})}">Shirts</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'pants'})}">Pants</a>
+                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shoes'})}">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -60,13 +57,13 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a href="javascript:navigate('mens','all')">All</a>
-                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
-                                <a href="javascript:navigate('mens','pants')">Pants</a>
-                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
+                                <a th:href="@{/catalog(gender=${'mens'}, type=${'all'})}">All</a>
+                                <a th:href="@{/catalog(gender=${'mens'}, type=${'shirts'})}">Shirts</a>
+                                <a th:href="@{/catalog(gender=${'mens'}, type=${'pants'})}">Pants</a>
+                                <a th:href="@{/catalog(gender=${'mens'}, type=${'shoes'})}">Shoes</a>
                             </div>
                         </div>
-    
+
                         <div tabindex="0" class="nav_lvl1">
                             <div class="nav_titleCont">
                                 <p class="nav_title">Help</p>
@@ -83,7 +80,9 @@
                     </nav>
                     <div class-="header_right">
                         <div class="nav_searchCont nav_searchCont--close">
-                            <i class="fas fa-search"></i>
+                            <button class="search-toggle" id="searchToggle">
+                              <i class="fas fa-search"></i>
+                            </button>
                         </div>
                         <div class="nav_accountCont nav_accountCont">
                             <a th:href="@{${#authentication.authenticated ? '/profile' : '/login'}}"><i class="fas fa-user"></i></a> <!--CONDITIONAL FOR SENDING USER TO PROFILE 
@@ -95,38 +94,19 @@
                     </div>
                 </div>
             </div>
+            <form th:action="@{/catalog}" method="get">
+                <div class="search-modal" id="searchModal">
+                    <div class="search-modal_top darkText">
+                        <h1>Search</h1>
+                        <div class="search-modal-content">
+                            <button class="close-search" id="closeSearch">&times;</button>
+                            <input type="text" name="query" placeholder="Type to search" class="search-input">   
+                        </div>
+                    </div>
+                </div>
+            </form>
         </header>
-
-        <section>
-            <h2>SHOPPING CART</h2>
-            <div>
-                <strong>ITEM</strong>
-                &lt;&gt;
-                <strong>PRICE</strong>
-            </div>
-            <div>
-                <img src ="shopImages/mens/AirMagBTTF.png" width="300" height="300">
-                <span>AIR MAG BACK TO THE FUTURE</span>
-                &lt;&gt;
-                <span>$26,250</span>
-                &lt;&gt;
-                <button role="button">REMOVE ITEM</button>
-            </div>
-            <hr>
-            <div>
-                <strong>TOTAL</strong>
-                <span>26,250</span>
-            </div>
-            <div>
-                <button role="button">PURCHASE</button>
-            </div>
-        </section>
-
-                    <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Shopping Cart</title>
-            </head>
+        <main style="padding-top: 80px;">
             <body>
                 <h1>Your Shopping Cart</h1>
                 <div>
@@ -155,7 +135,7 @@
                     </ul>
                 </div>
             </body>
-            </html>
+        </main>
 
         <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <footer class="footer">

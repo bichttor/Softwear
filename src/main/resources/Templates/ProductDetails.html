@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <title> Softwear - About </title>
-        <link rel="stylesheet" href="/css/FrontPageStyle.css">
-        <link rel="stylesheet" href="/css/about.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${product.productName}">Product Details</title>
+    <link rel="stylesheet" href="/css/FrontPageStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
         <!-- Header Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
         <header id="header-nav" class="header js-header">
             <div class="header_wrap gutter">
@@ -31,10 +30,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a th:href="@{/catalog(gender=${'all'}, type=${'all'})}">All</a>
-                            <a th:href="@{/catalog(gender=${'all'}, type=${'shirts'})}">Shirts</a>
-                            <a th:href="@{/catalog(gender=${'all'}, type=${'pants'})}">Pants</a>
-                            <a th:href="@{/catalog(gender=${'all'}, type=${'shoes'})}">Shoes</a>
+                                <a href="javascript:navigate('all','all')">All</a>
+                                <a href="javascript:navigate('all','shirts')">Shirts</a>
+                                <a href="javascript:navigate('all','pants')">Pants</a>
+                                <a href="javascript:navigate('all','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -46,10 +45,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                            <a th:href="@{/catalog(gender=${'womens'}, type=${'all'})}">All</a>
-                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shirts'})}">Shirts</a>
-                            <a th:href="@{/catalog(gender=${'womens'}, type=${'pants'})}">Pants</a>
-                            <a th:href="@{/catalog(gender=${'womens'}, type=${'shoes'})}">Shoes</a>
+                                <a href="javascript:navigate('womens','all')">All</a>
+                                <a href="javascript:navigate('womens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('womens','pants')">Pants</a>
+                                <a href="javascript:navigate('womens','shoes')">Shoes</a>
                             </div>
                         </div>
                         <div tabindex="0" class="nav_lvl1">
@@ -61,10 +60,10 @@
                             </div>
                             <div class="nav_dropdown">
                                 <!--EXAMPLE OF HOW TO CALL THE CATALOG, NEEDS STYLING-->
-                                <a th:href="@{/catalog(gender=${'mens'}, type=${'all'})}">All</a>
-                                <a th:href="@{/catalog(gender=${'mens'}, type=${'shirts'})}">Shirts</a>
-                                <a th:href="@{/catalog(gender=${'mens'}, type=${'pants'})}">Pants</a>
-                                <a th:href="@{/catalog(gender=${'mens'}, type=${'shoes'})}">Shoes</a>
+                                <a href="javascript:navigate('mens','all')">All</a>
+                                <a href="javascript:navigate('mens','shirts')">Shirts</a>
+                                <a href="javascript:navigate('mens','pants')">Pants</a>
+                                <a href="javascript:navigate('mens','shoes')">Shoes</a>
                             </div>
                         </div>
 
@@ -98,61 +97,39 @@
                     </div>
                 </div>
             </div>
-            <form th:action="@{/catalog}" method="get">
-                <div class="search-modal" id="searchModal">
-                    <div class="search-modal_top darkText">
-                        <h1>Search</h1>
-                        <div class="search-modal-content">
-                            <button class="close-search" id="closeSearch">&times;</button>
-                            <input type="text" name="query" placeholder="Type to search" class="search-input">   
-                        </div>
-                    </div>
+            <div class="search-modal" id="searchModal">
+                <div class="search-modal_top darkText">
+                      <h1>Search</h1>
+                  <div class="search-modal-content">
+                      <button class="close-search" id="closeSearch">&times;</button>
+                      <input type="text" placeholder="Type to search" class="search-input">
+                      
+                  </div>
                 </div>
-            </form>
+            </div>
         </header>
-
-         <!-- Main Body Section-->
-        <main id="app" class="main js-main">
-
-            <div class="heroGrid gutter darkText" style="background-color: #f1e8e3">
-                <div class="heroGrid-wrapper">
-                   <div class="hero_content">
-                      <span class="hero_topLine">About Softwear</span> 
-                      <div class="hero_copy">
-                         <div class="hero_header">
-                            <h1>The best finds are just a click away. Welcome!</h1>
-                         </div>
-                         <div class="hero_description">
-                            <p> 
-                                Welcome to Softwear, your ultimate destination for quality fashion. We are dedicated to offering a curated selection of products that combine style, quality, and affordability, all while delivering a seamless online shopping experience. At Softwear, we believe shopping should be convenient, enjoyable, and tailored to your needs, which is why we strive to bring you the latest trends and timeless essentials from trusted brands.
-                            </p>
-                            <br>
-                            <p>
-                                Our commitment goes beyond just selling products—we aim to build a community that values exceptional service and customer satisfaction. From fast, reliable shipping to a hassle-free return policy, every step of our process is designed with you in mind. Whether you’re here to refresh your wardrobe, upgrade your home, or find the perfect gift, Softwear is here to inspire and support you every step of the way. Thank you for choosing us as your trusted shopping partner!
-                            </p>
-                         </div>
-                      </div>
-                      <div class="hero_signature">
-                         <img src="/shopImages/logo2.png" alt="The Softwear Team"> 
-                         <div>
-                            <p><strong>The Softwear Team</strong><br>Brandon Koeck <br>Victor Olvera<br>Azaan Sundrani<br>Patrick Wyndham<br> Sebastian Martinez<br>Sofia Hernandez </p>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="hero_assets heroGrid_desktop">
-                      <ul class="image-gallery">
-                         <li class="image-position grid-img-0"><img src="/shopImages/about1.jpg" alt="About PEM Image of a woman on stilts dressed as a butterfly" class="img-cover"></li>
-                         <li class="image-position grid-img-1"><img src="/shopImages/about2.jpg" alt="About PEM grid2 1040 01" class="img-cover"></li>
-                         <li class="image-position grid-img-2"><img src="/shopImages/about3.jpg" alt="About PEM grid4 1040 01" class="img-cover"></li>
-                         <li class="image-position grid-img-3"><img src="/shopImages/about4.jpg" alt="About PEM grid3 1040 01" class="img-cover"></li>
-                      </ul>
-                   </div>
-                   <div class="heroGrid_mobile" style="background-image: url(&quot;https://s3.us-east-1.amazonaws.com/pem-org/general/AboutPEM_grid1_2000_01.jpg&quot;);"></div>
-                </div>
-             </div>
-        </main>
-
-        <!-- Footer Section // THIS SHOULD BE ON EVERY SINGLE PAGE-->
+    
+    <main>
+        <section class="product-details">
+            <div class="product-image">
+                <img th:src="${product.productImage}" alt="Product Image" />
+            </div>
+            <div class="product-info">
+                <h1 th:text="${product.productName}"></h1>
+                <p th:text="${details.productDescription}"></p>
+                <p th:text="${details.productSize}"></p>
+                <p th:text="${details.productColor}"></p>
+                <h3 th:text="'$' + ${product.productPrice}"></h3>
+                
+                <form th:action="@{/cart/add}" method="post">
+                    <input type="hidden" th:name="productId" th:value="${product.productId}" />
+                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-section">
@@ -182,7 +159,7 @@
                 <div class="footer-section">
                     <h3>Company Info</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a th:href="@{/about}">About Us</a></li>
                         <li><a href="#">Jobs & Opportunities</a></li>
                         <li><a href="#">Student Discount</a></li>
                         <li><a href="#">Press</a></li>
@@ -203,6 +180,7 @@
                 <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
                 <p>&copy; 2024 Softwear. All rights reserved.</p>
             </div>
-            </footer>
-    </body>
+        </footer>
+    </footer>
+</body>
 </html>
