@@ -58,16 +58,16 @@ public class OrdersService {
   
     // Method to get orders sorted by date
     public List<Orders> getOrdersSortedByDate() {
-        return repo.findAll(Sort.by(Sort.Order.desc("orderDate")));
+        return ordersRepository.findAll(Sort.by(Sort.Order.desc("orderDate")));
     }
 
     // Method to get orders sorted by customer
     public List<Orders> getOrdersSortedByCustomer() {
-        return repo.findAll(Sort.by(Sort.Order.asc("customerId")));
+        return ordersRepository.findAll(Sort.by(Sort.Order.asc("customerId")));
     }
 
     // Method to get orders sorted by dollar amount (order total)
     public List<Orders> getOrdersSortedByAmount() {
-        return repo.findAll(Sort.by(Sort.Order.desc("orderPrice")));
+        return ordersRepository.findAll(Sort.by(Sort.Order.desc("orderPrice")));
     }
 }
