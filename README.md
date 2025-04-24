@@ -44,4 +44,5 @@ Due to time constraints, simplicity of development, testing, and deployment, we 
 ### Database ERD (Entity Relationship Diagram)
 <img src="https://github.com/user-attachments/assets/ead02a55-1183-4ef2-919c-9ba0cf4b11aa" width="1400"/>
 
-
+### Setting Up
+While the site is no longer up, the files can be downloaded and viewed individually to see the coding process.
